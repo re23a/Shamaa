@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:shamaa/widgets/progress_bar.dart';
 
 class CharacterScreen extends StatelessWidget {
   const CharacterScreen({super.key});
@@ -15,45 +16,15 @@ class CharacterScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Stack(
-              children: [
-                Container(
-                  width: 336,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 6,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFEEEEEF),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  // right: 168,
-                  child: Container(
-                    width: 336,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          width: 6,
-                          strokeAlign: BorderSide.strokeAlignCenter,
-                          color: Color(0xFFE4C1F9),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
+            ProgressBar(progress: 1),
+            const SizedBox(
               height: 28,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28),
               child: Row(
                 children: [
                   Column(
@@ -83,7 +54,7 @@ class CharacterScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Padding(
@@ -107,7 +78,7 @@ class CharacterScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 104,
             ),
             InkWell(

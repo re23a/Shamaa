@@ -3,6 +3,7 @@ import 'package:shamaa/screens/sign_up/character_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:shamaa/widgets/progress_bar.dart';
 
 class AgeScreen extends StatelessWidget {
   const AgeScreen({super.key});
@@ -19,37 +20,7 @@ class AgeScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Stack(
-              children: [
-                Container(
-                  width: 336,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 6,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFEEEEEF),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 1,
-                  child: Container(
-                    width: 200,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          width: 6,
-                          strokeAlign: BorderSide.strokeAlignCenter,
-                          color: Color(0xFFE4C1F9),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+            ProgressBar(progress: 0.8),
             SizedBox(
               height: 28,
             ),
