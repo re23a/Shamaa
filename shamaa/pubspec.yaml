@@ -1,0 +1,27 @@
+name: shamaa
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  another_flutter_splash_screen: ^1.2.0
+  floating_bottom_navigation_bar: ^1.5.2
+  floating_navbar: ^2.0.2
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_snake_navigationbar: ^0.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
