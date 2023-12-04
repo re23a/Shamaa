@@ -3,6 +3,7 @@ import 'package:shamaa/screens/sign_up/age_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:shamaa/widgets/progress_bar.dart';
 
 class UserNameScreen extends StatelessWidget {
   const UserNameScreen({super.key});
@@ -16,45 +17,15 @@ class UserNameScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Stack(
-              children: [
-                Container(
-                  width: 336,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 6,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFEEEEEF),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 168,
-                  child: Container(
-                    width: 168,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          width: 6,
-                          strokeAlign: BorderSide.strokeAlignCenter,
-                          color: Color(0xFFE4C1F9),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
+            ProgressBar(progress: 0.6),
+            const SizedBox(
               height: 28,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28),
               child: Row(
                 children: [
                   Column(
@@ -84,7 +55,7 @@ class UserNameScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Row(
@@ -96,15 +67,15 @@ class UserNameScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: ExtraLightGrey),
-                  child: TextField(
-                      style: const TextStyle(color: Colors.white),
+                  child: const TextField(
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                       )),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 104,
             ),
             InkWell(

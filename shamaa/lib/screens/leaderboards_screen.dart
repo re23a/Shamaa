@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/style/custom_colors.dart';
+import 'package:shamaa/widgets/app_bar.dart';
 
 class LeaderboardsScreen extends StatelessWidget {
   const LeaderboardsScreen({super.key});
@@ -10,24 +11,14 @@ class LeaderboardsScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        leading: Row(
-          children: [
-            const SizedBox(
-              width: 10,
-            ),
-            Image.asset("assets/Group 632579.png"),
-            const SizedBox(
-              width: 5,
-            ),
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("شمعة"),
-                Text("مساعدك الشخصي "),
-              ],
-            ),
-          ],
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
         ),
+        leading: const ChatGPTBottom(),
+        title: const title(),
       ),
       body: Column(
         children: [
