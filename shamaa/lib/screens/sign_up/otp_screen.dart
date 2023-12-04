@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shamaa/screens/sign_up/name_signup_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:shamaa/widgets/progress_bar.dart';
 
 class OtpSingUpScreen extends StatelessWidget {
   const OtpSingUpScreen({super.key});
@@ -15,45 +16,15 @@ class OtpSingUpScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Stack(
-            children: [
-              Container(
-                width: 336,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 6,
-                      strokeAlign: BorderSide.strokeAlignCenter,
-                      color: Color(0xFFEEEEEF),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                right: 235,
-                child: Container(
-                  width: 100,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 6,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFE4C1F9),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-          SizedBox(
+          ProgressBar(progress: 0.4),
+          const SizedBox(
             height: 28,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28),
             child: Row(
               children: [
                 Column(
@@ -83,7 +54,7 @@ class OtpSingUpScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           Row(
@@ -95,19 +66,19 @@ class OtpSingUpScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: ExtraLightGrey),
-                child: TextField(
-                    style: const TextStyle(color: Colors.white),
+                child: const TextField(
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "   ادخل رمز التحقق  ",
                       focusedBorder: InputBorder.none,
-                      hintStyle: const TextStyle(
-                          color: Color.fromARGB(255, 158, 158, 158)),
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 158, 158, 158)),
                     )),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 104,
           ),
           InkWell(
