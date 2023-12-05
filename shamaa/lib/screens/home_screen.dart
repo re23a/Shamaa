@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/competition%20/competition_1.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/app_bar.dart';
 import 'package:shamaa/widgets/competitions.dart';
@@ -117,7 +118,7 @@ class HomeScreen extends StatelessWidget {
           height: 21,
         ),
         Padding(
-            padding: EdgeInsets.only(right: 32),
+            padding: const EdgeInsets.only(right: 32),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               const Text(
@@ -135,9 +136,17 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Competitions(
-                        txt: "مسابقة المفردات \nالانجليزية",
-                        url: Image.asset("assets/18 1.png")),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const Competition1();
+                        }));
+                      },
+                      child: Competitions(
+                          txt: "مسابقة المفردات \nالانجليزية",
+                          url: Image.asset("assets/18 1.png")),
+                    ),
                     const SizedBox(
                       width: 12,
                     ),
