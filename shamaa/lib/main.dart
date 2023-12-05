@@ -11,14 +11,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       locale: Locale('ar'),
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
-      supportedLocales: const [Locale('ar')],
+      supportedLocales: [Locale('ar')],
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
