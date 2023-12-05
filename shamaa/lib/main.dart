@@ -13,12 +13,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<OnbaordingBloc>(
           create: (BuildContext context) => OnbaordingBloc(),
         ),
-      ],
       child: const MaterialApp(
         locale: Locale('ar'),
         localizationsDelegates: [
