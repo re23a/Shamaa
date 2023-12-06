@@ -20,7 +20,7 @@ class AgeScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            ProgressBar(progress: 0.8),
+            ProgressBar(progress: 0.83),
             SizedBox(
               height: 28,
             ),

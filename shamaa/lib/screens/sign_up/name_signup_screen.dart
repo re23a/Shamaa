@@ -20,7 +20,7 @@ class UserNameScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ProgressBar(progress: 0.6),
+            ProgressBar(progress: 0.664),
             const SizedBox(
               height: 28,
             ),

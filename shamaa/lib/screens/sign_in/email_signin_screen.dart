@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/sign_in/otp_signin_screen.dart';
+import 'package:shamaa/screens/sign_in/password_signin_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
@@ -92,7 +92,7 @@ class SignInScreen extends StatelessWidget {
           InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const OtpSingInScreen();
+                  return const PasswordSingInScreen();
                 }));
               },
               child: CustomButtomBig(text: 'التالي', color: purple))

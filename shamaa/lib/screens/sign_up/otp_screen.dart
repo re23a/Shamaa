@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/sign_up/name_signup_screen.dart';
+import 'package:shamaa/screens/sign_up/password_siginup_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/progress_bar.dart';
@@ -19,7 +20,7 @@ class OtpSingUpScreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          ProgressBar(progress: 0.4),
+          ProgressBar(progress: 0.332),
           const SizedBox(
             height: 28,
           ),
@@ -84,7 +85,7 @@ class OtpSingUpScreen extends StatelessWidget {
           InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const UserNameScreen();
+                  return const PasswordSingUpScreen();
                 }));
               },
               child: CustomButtomBig(text: 'التالي', color: purple))
