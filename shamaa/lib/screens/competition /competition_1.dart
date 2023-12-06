@@ -63,7 +63,7 @@ class Competition1 extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 119,
                       ),
                       Container(
