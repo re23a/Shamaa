@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/competition%20/competition_2.dart';
+import 'package:shamaa/screens/competition/competition_2.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/letters_container.dart';

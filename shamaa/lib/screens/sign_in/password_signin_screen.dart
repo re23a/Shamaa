@@ -4,8 +4,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/progress_bar.dart';
 
-class OtpSingInScreen extends StatelessWidget {
-  const OtpSingInScreen({super.key});
+class PasswordSingInScreen extends StatelessWidget {
+  const PasswordSingInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +32,11 @@ class OtpSingInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'الرجاء إدخال رمز التحقق',
+                      'الرجاء إدخال كلمة المرور',
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: Color(0xFF3A3A3A),
                         fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      'تم إرسال رمز التحقق الى gmail.com@***',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Color(0xFF3A3A3A),
-                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -70,7 +61,7 @@ class OtpSingInScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "   ادخل رمز التحقق  ",
+                      hintText: "   ادخل كلمة المرور  ",
                       focusedBorder: InputBorder.none,
                       hintStyle:
                           TextStyle(color: Color.fromARGB(255, 158, 158, 158)),

@@ -19,7 +19,7 @@ class CharacterScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ProgressBar(progress: 1),
+            ProgressBar(progress: .996),
             const SizedBox(
               height: 28,
             ),

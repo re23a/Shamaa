@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/competition%20/competition_1.dart';
+import 'package:shamaa/screens/competition/competition_1.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/app_bar.dart';
 import 'package:shamaa/widgets/competitions.dart';
@@ -26,29 +26,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Row(
-            children: [
-              Container(
-                height: 50,
-                width: 329,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromARGB(63, 158, 158, 158)),
-                child: const TextField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Color.fromARGB(255, 158, 158, 158),
-                      )),
-                ),
-              ),
-            ],
-          ),
-        ),
+        const SearchBar(),
         const SizedBox(
           height: 21,
         ),

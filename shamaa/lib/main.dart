@@ -24,6 +24,7 @@ class MainApp extends StatelessWidget {
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
         ],
         supportedLocales: [Locale('ar')],
         debugShowCheckedModeBanner: false,
