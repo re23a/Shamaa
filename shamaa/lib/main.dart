@@ -18,6 +18,7 @@ class MainApp extends StatelessWidget {
         BlocProvider<OnbaordingBloc>(
           create: (BuildContext context) => OnbaordingBloc(),
         ),
+      ],
       child: const MaterialApp(
         locale: Locale('ar'),
         localizationsDelegates: [
