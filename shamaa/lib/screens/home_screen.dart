@@ -4,6 +4,7 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/app_bar.dart';
 import 'package:shamaa/widgets/competitions.dart';
 import 'package:shamaa/widgets/explore_course.dart';
+import 'package:shamaa/widgets/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        const SearchBar(),
+        const SearchBarWidget(),
         const SizedBox(
           height: 21,
         ),
