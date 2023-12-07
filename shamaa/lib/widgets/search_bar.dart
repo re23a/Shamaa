@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({
+class SearchBarWidget extends StatelessWidget {
+  const SearchBarWidget({
     super.key,
   });
 
