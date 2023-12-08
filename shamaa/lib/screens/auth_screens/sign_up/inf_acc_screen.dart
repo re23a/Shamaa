@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/sign_up/character_screen.dart';
+import 'package:shamaa/screens/auth_screens/sign_up/character_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/CoustomTextField.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
@@ -160,7 +158,12 @@ class _InfAccScreenState extends State<InfAccScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const CharacterScreen()),
+            MaterialPageRoute(
+                builder: (context) => CharacterScreen(
+                      userName: userNameController.text,
+                      dateOfBirth: dateController.text,
+                      grade: selectedGrade!,
+                    )),
           );
         }
       },

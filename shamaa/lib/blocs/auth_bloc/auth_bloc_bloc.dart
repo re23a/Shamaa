@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_event.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_state.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_event.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_state.dart';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthStates> {

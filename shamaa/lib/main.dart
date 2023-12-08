@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_bloc.dart';
+import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
-import 'package:shamaa/screens/splash_screen.dart';
+import 'package:shamaa/screens/leaderboards_screen.dart';
+import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/service/supabase_service.dart';
 
 Future<void> main() async {
@@ -32,6 +34,9 @@ class MainApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (BuildContext context) => AuthBloc(),
         ),
+        BlocProvider<AccountBlocBloc>(
+          create: (BuildContext context) => AccountBlocBloc(),
+        ),
       ],
       child: const MaterialApp(
         locale: Locale('ar'),
@@ -42,7 +47,7 @@ class MainApp extends StatelessWidget {
         ],
         supportedLocales: [Locale('ar')],
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: LeaderboardsScreen(),
       ),
     );
   }

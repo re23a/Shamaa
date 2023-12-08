@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
+import 'package:shamaa/model/account.dart';
 import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/progress_bar.dart';
+import 'package:intl/intl.dart';
 
 class CharacterScreen extends StatefulWidget {
-  const CharacterScreen({super.key});
-
+  const CharacterScreen(
+      {super.key,
+      required this.userName,
+      required this.dateOfBirth,
+      required this.grade});
+  final String userName;
+  final String dateOfBirth;
+  final String grade;
   @override
   _CharacterScreenState createState() => _CharacterScreenState();
 }
@@ -94,15 +104,51 @@ class _CharacterScreenState extends State<CharacterScreen> {
     return InkWell(
       onTap: () {
         if (selectedCharacterIndex != -1) {
-          // Proceed with the selected character
+          // Parsing the dateOfBirth string to DateTime object
+          final DateFormat format = DateFormat('yyyy/MM/dd');
+          DateTime parsedDateOfBirth;
+          try {
+            parsedDateOfBirth = format.parse(widget.dateOfBirth);
+          } catch (e) {
+            // Handle the error or show a message if the date format is incorrect
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Invalid date format'),
+              duration: Duration(seconds: 2),
+            ));
+            return;
+          }
+
+          // Creating a new Account object
+          final Account newAccount = Account(
+            userId: context
+                .read<AccountBlocBloc>()
+                .supabaseClient
+                .auth
+                .currentUser!
+                .id, // Assuming this method exists and gets the current user's ID
+            name: widget.userName,
+            dateOfBirth: parsedDateOfBirth,
+            studentClass: widget.grade,
+            creatureIndex: selectedCharacterIndex,
+            stars: 0, // Assuming default stars value is 0
+          );
+
+          // Dispatching CreateAccountEvent
+          context
+              .read<AccountBlocBloc>()
+              .add(CreateAccountEvent(account: newAccount));
+
+          // Navigate to the next screen
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => NavBar()),
+            MaterialPageRoute(
+                builder: (context) =>
+                    NavBar()), // Replace with your desired screen
             (Route<dynamic> route) => false,
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('الرجاء اختيار شخصيتك'),
+            content: Text('Please select a character'),
             duration: Duration(seconds: 2),
           ));
         }

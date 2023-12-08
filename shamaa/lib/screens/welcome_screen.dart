@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/sign_in/email_signin_screen.dart';
-import 'package:shamaa/screens/sign_up/email_signup_screen.dart';
+import 'package:shamaa/screens/auth_screens/sign_in/email_signin_screen.dart';
+import 'package:shamaa/screens/auth_screens/sign_up/email_signup_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
