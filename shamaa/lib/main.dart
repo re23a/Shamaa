@@ -4,8 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shamaa/blocs/athe_bloc/athe_bloc_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
-import 'package:shamaa/screens/home_screen.dart';
-import 'package:shamaa/screens/sign_in/email_signin_screen.dart';
+
 import 'package:shamaa/screens/splash_screen.dart';
 import 'package:shamaa/service/supabase_service.dart';
 
@@ -33,7 +32,7 @@ class MainApp extends StatelessWidget {
           create: (BuildContext context) => AuthBloc(),
         ),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         locale: Locale('ar'),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
