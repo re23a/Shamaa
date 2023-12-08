@@ -75,6 +75,7 @@ class SignUpScreen extends StatelessWidget {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
         } else if (state is SuccessSignUpState) {
+          Navigator.pop(context);
           Navigator.push(
             context,
             MaterialPageRoute(
