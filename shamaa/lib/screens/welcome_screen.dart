@@ -25,7 +25,7 @@ class WelcomeScreen extends StatelessWidget {
             InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const SignInScreen();
+                    return SignInScreen();
                   }));
                 },
                 child: CustomButtomBig(text: 'تسجيل دخول', color: purple)),
@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
             InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const SignUpScreen();
+                    return SignUpScreen();
                   }));
                 },
                 child: InkWell(
