@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shamaa/blocs/athe_bloc/athe_bloc_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
-
 import 'package:shamaa/screens/splash_screen.dart';
 import 'package:shamaa/service/supabase_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
 
+  await supabaseConfig();
   await GetStorage.init("authLocalDataBase");
   await GetStorage.init("userLocalDataBase");
   await GetStorage.init();
-  supabaseConfig();
   runApp(const MainApp());
 }
 

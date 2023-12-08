@@ -1,9 +1,16 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> supabaseConfig() async {
+  String? supabaseUrl = dotenv.env['SUPABASE_URL'];
+  String? supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
+
+  if (supabaseUrl == null || supabaseAnonKey == null) {
+    throw Exception('Supabase URL and Anon Key must not be null');
+  }
+
   await Supabase.initialize(
-    url: "https://yoaylpzsutwohboeszaz.supabase.co",
-    anonKey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvYXlscHpzdXR3b2hib2VzemF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk3NzcyMDksImV4cCI6MjAxNTM1MzIwOX0.VJZX5mB4m5Lq8ZBIdlRyhjKxmbEkS-DHE3C04dY03Pk",
+    url: supabaseUrl,
+    anonKey: supabaseAnonKey,
   );
 }
