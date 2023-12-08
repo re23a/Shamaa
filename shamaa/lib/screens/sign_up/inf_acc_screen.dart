@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/sign_up/character_screen.dart';
@@ -62,14 +64,13 @@ class _InfAccScreenState extends State<InfAccScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: CustomTextField(
-                controller: userNameController,
-                hintText: "ادخل اسمك هنا",
-                isPassword: false,
-              ),
+            const SizedBox(height: 25),
+            CustomTextField(
+              controller: userNameController,
+              hintText: "ادخل اسمك هنا",
+              isPassword: false,
             ),
+            const SizedBox(height: 25),
             buildDatePicker(),
             const SizedBox(height: 25),
             _buildGradeDropdown(grades),
