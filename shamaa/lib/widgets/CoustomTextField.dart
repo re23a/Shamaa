@@ -14,16 +14,19 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        hintText: hintText,
-        prefixIcon: Icon(
-          isPassword ? Icons.lock : Icons.text_fields,
+    return Padding(
+      padding: const EdgeInsets.only(left: 25, right: 25),
+      child: TextField(
+        controller: controller,
+        obscureText: isPassword,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          hintText: hintText,
+          prefixIcon: Icon(
+            isPassword ? Icons.lock : Icons.text_fields,
+          ),
         ),
       ),
     );

@@ -75,12 +75,15 @@ class SignInScreen extends StatelessWidget {
               ),
             );
           } else if (state is ErrorLoginState) {
+            Navigator.pop(context);
+
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),
               ),
             );
           } else if (state is SuccessLoginState) {
+            Navigator.pop(context);
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => NavBar()),
