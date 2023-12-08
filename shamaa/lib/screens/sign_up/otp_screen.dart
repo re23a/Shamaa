@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/sign_up/name_signup_screen.dart';
+
 import 'package:shamaa/screens/sign_up/password_siginup_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
