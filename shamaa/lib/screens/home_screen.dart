@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/Courses/chapter_screen.dart';
 import 'package:shamaa/screens/competition/competition_1.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/app_bar.dart';
@@ -51,10 +52,18 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ExploreCourse(
-                      txt: 'الرياضيات',
-                      color: yellow,
-                      url: Image.asset("assets/17 1.png"),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ChapterScreen();
+                        }));
+                      },
+                      child: ExploreCourse(
+                        txt: 'الرياضيات',
+                        color: yellow,
+                        url: Image.asset("assets/17 1.png"),
+                      ),
                     ),
                     const SizedBox(
                       width: 12,
