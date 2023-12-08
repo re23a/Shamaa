@@ -81,9 +81,11 @@ class OtpSingUpScreen extends StatelessWidget {
         } else {
           Navigator.of(context).pop();
           if (state is ErrorOtpState) {
+            Navigator.pop(context);
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.message)));
           } else if (state is SuccessOtpState) {
+            Navigator.pop(context);
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => InfAccScreen()));
           }
