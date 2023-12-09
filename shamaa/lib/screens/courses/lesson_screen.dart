@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/courses/vidoe_screen.dart';
+import 'package:shamaa/screens/tests/get_start_test_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/box_lesson.dart';
 
@@ -29,17 +30,23 @@ class LessonScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                BoxLesson(
-                  color: lightgreen,
-                  txt: 'اختبر معرفتك',
-                  image: Image.asset("assets/9548.png"),
-                ),
                 InkWell(
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const VideoScreen()));
+                            builder: (context) => const GetStartTest()));
+                  },
+                  child: BoxLesson(
+                    color: lightgreen,
+                    txt: 'اختبر معرفتك',
+                    image: Image.asset("assets/9548.png"),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => VideoScreen()));
                   },
                   child: BoxLesson(
                       color: blue,
