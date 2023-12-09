@@ -12,7 +12,7 @@ class VideoScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -22,7 +22,7 @@ class VideoScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 31,
           ),
           Center(
@@ -30,7 +30,7 @@ class VideoScreen extends StatelessWidget {
               width: 328,
               height: 250.47,
               decoration: ShapeDecoration(
-                image: const DecorationImage(
+                image: DecorationImage(
                   image: NetworkImage("https://via.placeholder.com/328x250"),
                   fit: BoxFit.fill,
                 ),
@@ -40,7 +40,7 @@ class VideoScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 72,
           ),
           const Padding(
@@ -92,7 +92,7 @@ class VideoScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 36,
           ),
           InkWell(

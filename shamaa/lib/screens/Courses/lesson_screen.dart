@@ -12,7 +12,7 @@ class LessonScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -22,7 +22,7 @@ class LessonScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 36,
           ),
           Center(
