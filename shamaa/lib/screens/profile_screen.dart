@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/settings_screen.dart';
-import 'package:shamaa/screens/welcome_screen.dart';
-import 'package:shamaa/style/custom_colors.dart';
 
-import 'package:shamaa/widgets/profile_wiget.dart';
+import 'package:shamaa/style/custom_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

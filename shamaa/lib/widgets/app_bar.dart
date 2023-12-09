@@ -27,7 +27,7 @@ class ChatGPTBottom extends StatelessWidget {
                   Text(
                     '  شمعة راح يشرح لك اي شيء ويجاوب عل كل اسألتك',
                     style: TextStyle(
-                      color: Color(0xFF3A3A3A),
+                      color: black,
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
@@ -93,16 +93,14 @@ class title extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("شمعة",
-                style: TextStyle(
-                  color: Color(0xFF3A3A3A),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                )),
+            Image.asset("assets/Group 632577.png"),
+            SizedBox(
+              height: 5,
+            ),
             Text(
               'مساعدك الشخصي ',
               style: TextStyle(
-                color: Color(0xFF3A3A3A),
+                color: black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),

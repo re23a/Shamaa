@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shamaa/blocs/athe_bloc/athe_bloc_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
+import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/screens/splash_screen.dart';
 import 'package:shamaa/service/supabase_service.dart';
 
@@ -42,7 +43,7 @@ class MainApp extends StatelessWidget {
         ],
         supportedLocales: [Locale('ar')],
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: NavBar(),
       ),
     );
   }
