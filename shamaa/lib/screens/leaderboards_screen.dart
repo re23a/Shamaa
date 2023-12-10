@@ -45,6 +45,7 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
                   _buildTopLeaderboard(sortedAccounts.first),
                   Expanded(
                     child: ListView.builder(
+                      padding: EdgeInsets.only(bottom: 100),
                       itemCount: sortedAccounts.length - 1,
                       itemBuilder: (context, index) {
                         final account = sortedAccounts[index + 1];
@@ -96,34 +97,37 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
       String name, String score, String avatarAsset, String starsAsset) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 29),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 57,
-                height: 57,
-                decoration: const ShapeDecoration(
-                  color: Colors.white,
-                  shape: OvalBorder(
-                    side: BorderSide(width: 0.39, color: Color(0xFF3A3A3A)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 57,
+                  height: 57,
+                  decoration: const ShapeDecoration(
+                    color: Colors.white,
+                    shape: OvalBorder(
+                      side: BorderSide(width: 0.39, color: Color(0xFF3A3A3A)),
+                    ),
                   ),
+                  child: Image.asset(avatarAsset),
                 ),
-                child: Image.asset(avatarAsset),
-              ),
-              const SizedBox(width: 6),
-              Text(name),
-            ],
-          ),
-          Row(
-            children: [
-              Text(score),
-              const SizedBox(width: 5),
-              Image.asset(starsAsset),
-            ],
-          ),
-        ],
+                const SizedBox(width: 6),
+                Text(name),
+              ],
+            ),
+            Row(
+              children: [
+                Text(score),
+                const SizedBox(width: 5),
+                Image.asset(starsAsset),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

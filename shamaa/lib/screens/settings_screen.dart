@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/edit_profile_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
+import 'package:shamaa/widgets/custom_bottoms.dart';
 
 import 'package:shamaa/widgets/profile_wiget.dart';
 
@@ -11,7 +13,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool switchValue = false;
+  bool switchValue = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,15 +92,86 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
             ),
-            const ListProfile(
-              txt: 'اعدادات الحساب',
-              iconLeading: Icon(Icons.edit_note_sharp),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditProfilScreen()));
+              },
+              child: const ListProfile(
+                txt: 'اعدادات الحساب',
+                iconLeading: Icon(Icons.edit_note_sharp),
+                iconTrailing: Icon(Icons.arrow_forward_ios),
+              ),
             ),
-            const ListProfile(
-              txt: 'تسجيل خروج',
-              iconLeading: Icon(Icons.exit_to_app),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    builder: (context) {
+                      return SimpleDialog(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'هل انت متأكد انك تريد تسجيل الخروج؟',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: black,
+                                    fontSize: 20,
+                                    fontFamily: '.SF Arabic Rounded',
+                                    fontWeight: FontWeight.w400,
+                                    height: 0.07,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                SimpleDialogOption(
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: CustomBottom(
+                                            text: 'لا',
+                                            color: ExtraLightGrey,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 40,
+                                        ),
+                                        InkWell(
+                                          /// تسجيل  خروج من الحساب
+                                          onTap: () {},
+                                          child: CustomBottom(
+                                            text: 'نعم',
+                                            color: purple,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                    context: context);
+              },
+              child: const ListProfile(
+                txt: 'تسجيل خروج',
+                iconLeading: Icon(Icons.exit_to_app),
+                iconTrailing: Icon(Icons.arrow_forward_ios),
+              ),
             ),
             const ListProfile(
               txt: 'عن التطبيق',

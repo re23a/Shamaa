@@ -40,9 +40,12 @@ class ChatGPTBottom extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ContainersSheet(
-                          txt: 'محادثـة\nمبـاشـرة',
-                          icon: Image.asset("assets/Vector.png"),
+                        InkWell(
+                          onTap: () {},
+                          child: ContainersSheet(
+                            txt: 'محادثـة\nمبـاشـرة',
+                            icon: Image.asset("assets/Vector.png"),
+                          ),
                         ),
                         ContainersSheet(
                           txt: 'صـورة',

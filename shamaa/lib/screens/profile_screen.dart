@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/settings_screen.dart';
+import 'package:shamaa/screens/switch_account_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 
@@ -42,22 +43,30 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.only(right: 28),
               child: Row(
                 children: [
-                  Container(
-                    width: 92.15,
-                    height: 34.15,
-                    decoration: ShapeDecoration(
-                      color: purple,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.62),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SwitchAccountScreen()));
+                    },
+                    child: Container(
+                      width: 92.15,
+                      height: 40,
+                      decoration: ShapeDecoration(
+                        color: purple,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.62),
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'تبديل الحساب',
-                        style: TextStyle(
-                          color: black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
+                      child: Center(
+                        child: Text(
+                          'تبديل الحساب',
+                          style: TextStyle(
+                            color: black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ),
@@ -118,23 +127,32 @@ class ProfileScreen extends StatelessWidget {
             DefaultTabController(
               length: 2,
               child: Column(children: [
-                TabBar(
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  labelStyle: TextStyle(
-                    color: purple,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
+                SizedBox(
+                  height: 50,
+                  child: TabBar(
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    labelStyle: TextStyle(
+                      color: purple,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    labelColor: purple,
+                    unselectedLabelColor: grey,
+                    indicatorWeight: 4,
+                    indicatorColor: purple,
+                    tabs: [
+                      Tab(text: "الدروس والمسابقات"),
+                      Tab(text: "المراجع"),
+                    ],
                   ),
-                  labelColor: purple,
-                  unselectedLabelColor: grey,
-                  indicatorWeight: 4,
-                  indicatorColor: purple,
-                  tabs: [
-                    Tab(text: "الدروس والمسابقات"),
-                    Tab(text: "المراجع"),
-                  ],
                 ),
-                // TabBarView(children: [])
+                Container(
+                    color: white,
+                    height: 350,
+                    child: TabBarView(children: [
+                      Icon(Icons.add_a_photo),
+                      Icon(Icons.access_alarm)
+                    ]))
               ]),
             ),
           ],

@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:shamaa/screens/courses/lesson%20_cmpletion.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:video_player/video_player.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 
-class VideoScreen extends StatelessWidget {
+class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
+
+  @override
+  State<VideoScreen> createState() => _VideoScreenState();
+}
+
+class _VideoScreenState extends State<VideoScreen> {
+  final FlickManager flickManager = FlickManager(
+    videoPlayerController: VideoPlayerController.asset('assets/vid1.mp4'),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -12,35 +23,27 @@ class VideoScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
           ),
         ),
-        title: Text("درس عملية القسمة"),
+        title: const Text("درس عملية القسمة"),
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 31,
           ),
           Center(
             child: Container(
               width: 328,
               height: 250.47,
-              decoration: ShapeDecoration(
-                image: DecorationImage(
-                  image: NetworkImage("https://via.placeholder.com/328x250"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(9.94),
-                ),
-              ),
+              child: FlickVideoPlayer(flickManager: flickManager),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 72,
           ),
           const Padding(
@@ -60,7 +63,7 @@ class VideoScreen extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                  'القسمة هي عملية رياضية تقوم على تقسيم عدد إلى أجزاء\n متساوية.',
+                  '\u2022القسمة هي عملية رياضية تقوم على تقسيم عدد إلى أجزاء\n متساوية.',
                   style: TextStyle(
                     color: Color(0xFF3A3A3A),
                     fontSize: 14,
@@ -71,7 +74,7 @@ class VideoScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  "رمز القسمة هو ÷",
+                  "\u2022رمز القسمة هو ÷",
                   style: TextStyle(
                     color: Color(0xFF3A3A3A),
                     fontSize: 14,
@@ -82,7 +85,7 @@ class VideoScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  "مثال: إذا كان لدينا 12 حلوى ونريد توزيعها بالتساوي على 3 أشخاص، يمكننا استخدام القسمة. 12 (عدد الحلوى) ÷ 3 (عدد الأشخاص) = 4 حلوى لكل شخص.",
+                  "\u2022مثال: إذا كان لدينا 12 حلوى ونريد توزيعها بالتساوي على 3 أشخاص، يمكننا استخدام القسمة. 12 (عدد الحلوى) ÷ 3 (عدد الأشخاص) = 4 حلوى لكل شخص.",
                   style: TextStyle(
                     color: Color(0xFF3A3A3A),
                     fontSize: 14,
