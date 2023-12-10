@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 
 class BoxAnswer extends StatelessWidget {
-  const BoxAnswer({
-    super.key,
-    required this.txt,
-  });
+  BoxAnswer(
+      {super.key,
+      required this.txt,
+      required this.isCorrect,
+      this.isWrong = false});
   final String txt;
+  final bool isCorrect;
+  bool isWrong;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 160,
       height: 50,
       decoration: ShapeDecoration(
-        color: Color(0xFFEEEEEF),
+        color: isCorrect
+            ? Colors.greenAccent
+            : isWrong
+                ? Colors.redAccent
+                : Color(0xFFEEEEEF),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
