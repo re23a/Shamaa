@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/chat_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/containers_sheet.dart';
 
@@ -41,7 +42,12 @@ class ChatGPTBottom extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatScreen()));
+                          },
                           child: ContainersSheet(
                             txt: 'محادثـة\nمبـاشـرة',
                             icon: Image.asset("assets/Vector.png"),
