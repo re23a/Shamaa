@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_bloc.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_event.dart';
-import 'package:shamaa/blocs/athe_bloc/athe_bloc_state.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_bloc.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_event.dart';
+import 'package:shamaa/blocs/auth_bloc/auth_bloc_state.dart';
+
 import 'package:shamaa/screens/sign_up/otp_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/CoustomTextField.dart';
@@ -65,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthStates>(
       listener: (context, state) {
         if (state is LoadingSignUpState) {
-          // print("sign up");
+          print("sign up");
           showDialog(
               context: context,
               builder: (context) =>

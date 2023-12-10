@@ -1,5 +1,5 @@
 class Account {
-  final int id;
+  final int? id; // id is nullable
   final String userId;
   final String name;
   final DateTime dateOfBirth;
@@ -8,8 +8,8 @@ class Account {
   final int stars;
 
   Account({
+    this.id, // Nullable
     required this.userId,
-    required this.id,
     required this.name,
     required this.dateOfBirth,
     this.studentClass = '',
@@ -19,18 +19,19 @@ class Account {
 
   factory Account.fromMap(Map<String, dynamic> map) {
     return Account(
-      id: map['id'],
-      userId: map['user_id'],
-      name: map['name'],
-      dateOfBirth: DateTime.parse(map['date_of_birth']),
-      studentClass: map['student_class'] ?? '',
-      creatureIndex: map['creature_index'] ?? 0,
-      stars: map['stars'] ?? 0,
+      id: map['id'] as int?,
+      userId: map['user_id'] as String,
+      name: map['name'] as String,
+      dateOfBirth: DateTime.parse(map['date_of_birth'] as String),
+      studentClass: map['student_class'] as String? ?? '',
+      creatureIndex: map['creature_index'] as int? ?? 0,
+      stars: map['stars'] as int? ?? 0,
     );
   }
+
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      if (id != null) 'id': id,
       'user_id': userId,
       'name': name,
       'date_of_birth': dateOfBirth.toIso8601String(),

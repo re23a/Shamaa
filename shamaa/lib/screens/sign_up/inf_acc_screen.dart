@@ -19,9 +19,7 @@ class _InfAccScreenState extends State<InfAccScreen> {
   final dateController = TextEditingController();
   final gradeController = TextEditingController();
   final userNameController = TextEditingController();
-
   String? selectedGrade;
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +36,6 @@ class _InfAccScreenState extends State<InfAccScreen> {
       'الصف الخامس الابتدائي',
       'الصف السادس الابتدائي',
     ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -94,7 +91,6 @@ class _InfAccScreenState extends State<InfAccScreen> {
           ),
         ),
       );
-
   Future<void> _selectDate(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
@@ -158,7 +154,12 @@ class _InfAccScreenState extends State<InfAccScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const CharacterScreen()),
+            MaterialPageRoute(
+                builder: (context) => CharacterScreen(
+                      userName: userNameController.text,
+                      dateOfBirth: dateController.text,
+                      grade: selectedGrade!,
+                    )),
           );
         }
       },
