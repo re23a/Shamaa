@@ -34,17 +34,60 @@ class _VideoScreenState extends State<VideoScreen> {
       body: Column(
         children: [
           const SizedBox(
-            height: 31,
+            height: 50,
           ),
           Center(
-            child: Container(
-              width: 328,
-              height: 250.47,
-              child: FlickVideoPlayer(flickManager: flickManager),
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 260,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFA9DEF9),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: FlickVideoPlayer(flickManager: flickManager),
+                  ),
+                ),
+                Container(
+                  width: 350,
+                  height: 50,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFCF6BD),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Row(
+                      children: [
+                        Icon(Icons.watch_later_outlined),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '5 دقائق',
+                          style: TextStyle(
+                            color: Color(0xFF3A3A3A),
+                            fontSize: 14,
+                            fontFamily: '.SF Arabic Rounded',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
           const SizedBox(
-            height: 72,
+            height: 20,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
@@ -95,7 +138,7 @@ class _VideoScreenState extends State<VideoScreen> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 36,
           ),
           InkWell(
