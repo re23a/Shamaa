@@ -24,14 +24,6 @@ class AccountBlocBloc extends Bloc<AccountBlocEvent, AccountBlocState> {
       final List<Account> accounts =
           data.map((accountData) => Account.fromMap(accountData)).toList();
 
-      print(response);
-      print(response);
-
-      print(response);
-
-      print(response);
-
-      print('Fetched data: ${response.data}');
       emit(GetUsersSuccessState(accounts));
     } catch (error) {
       emit(AccountErrorState(error.toString()));

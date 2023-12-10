@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/auth_screens/sign_up/character_screen.dart';
+import 'package:shamaa/screens/sign_up/character_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/CoustomTextField.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
@@ -19,9 +19,7 @@ class _InfAccScreenState extends State<InfAccScreen> {
   final dateController = TextEditingController();
   final gradeController = TextEditingController();
   final userNameController = TextEditingController();
-
   String? selectedGrade;
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +36,6 @@ class _InfAccScreenState extends State<InfAccScreen> {
       'الصف الخامس الابتدائي',
       'الصف السادس الابتدائي',
     ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -94,7 +91,6 @@ class _InfAccScreenState extends State<InfAccScreen> {
           ),
         ),
       );
-
   Future<void> _selectDate(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
