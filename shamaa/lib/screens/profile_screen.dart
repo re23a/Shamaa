@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/settings_screen.dart';
+
 import 'package:shamaa/style/custom_colors.dart';
-import 'package:shamaa/widgets/app_bar.dart';
-import 'package:shamaa/widgets/profile_wiget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -9,94 +9,135 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
-      appBar: AppBar(
-        backgroundColor: purple,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
+        backgroundColor: white,
+        appBar: AppBar(
+          backgroundColor: purple,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
           ),
-        ),
-        leading: ChatGPTBottom(),
-        title: title(),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 33),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: 83,
-                  height: 83,
-                  decoration: const ShapeDecoration(
-                    color: Colors.white,
-                    shape: OvalBorder(
-                      side: BorderSide(width: 0.39, color: Color(0xFF3A3A3A)),
-                    ),
-                  ),
-                  child: Image.asset("assets/c1.png"),
-                ),
-                const SizedBox(
-                  width: 9,
-                ),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'عبدالله محمد',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF3A3A3A),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      'الصف الثالث الابتدائي',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF3A3A3A),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 28,
-            ),
-            const ListProfile(
-              txt: 'الاشعارات',
-              iconLeading: Icon(Icons.notifications_none_outlined),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
-            ),
-            const ListProfile(
-              txt: 'اعدادات الحساب',
-              iconLeading: Icon(Icons.edit_note_sharp),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
-            ),
-            const ListProfile(
-              txt: 'تسجيل خروج',
-              iconLeading: Icon(Icons.exit_to_app),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
-            ),
-            const ListProfile(
-              txt: 'عن التطبيق',
-              iconLeading: Icon(Icons.info_outline),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
-            ),
-            const ListProfile(
-              txt: 'سياسة الاستخدام',
-              iconLeading: Icon(Icons.lock_clock_outlined),
-              iconTrailing: Icon(Icons.arrow_forward_ios),
-            ),
+          title: Text("الحساب الشخصي"),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SettingsScreen()));
+                  },
+                  child: Icon(Icons.settings)),
+            )
           ],
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            SizedBox(
+              height: 16,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 28),
+              child: Row(
+                children: [
+                  Container(
+                    width: 92.15,
+                    height: 34.15,
+                    decoration: ShapeDecoration(
+                      color: purple,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.62),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'تبديل الحساب',
+                        style: TextStyle(
+                          color: black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  Container(
+                    width: 147,
+                    height: 147,
+                    decoration: const ShapeDecoration(
+                      color: Colors.white,
+                      shape: OvalBorder(
+                        side: BorderSide(width: 0.69, color: Color(0xFF3A3A3A)),
+                      ),
+                    ),
+                    child: Image.asset("assets/26.png"),
+                  ),
+                  Text(
+                    'عبدالله محمد',
+                    style: TextStyle(
+                      color: black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    'الصف الثالث الابتدائي',
+                    style: TextStyle(
+                      color: black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '13',
+                        style: TextStyle(
+                          color: black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Image.asset("assets/yellow star.png"),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            DefaultTabController(
+              length: 2,
+              child: Column(children: [
+                TabBar(
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelStyle: TextStyle(
+                    color: purple,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  labelColor: purple,
+                  unselectedLabelColor: grey,
+                  indicatorWeight: 4,
+                  indicatorColor: purple,
+                  tabs: [
+                    Tab(text: "الدروس والمسابقات"),
+                    Tab(text: "المراجع"),
+                  ],
+                ),
+                // TabBarView(children: [])
+              ]),
+            ),
+          ],
+        ));
   }
 }

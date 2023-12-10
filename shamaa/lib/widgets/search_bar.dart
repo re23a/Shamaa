@@ -11,7 +11,7 @@ class SearchBarWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: 50,
+          height: 40,
           width: 329,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

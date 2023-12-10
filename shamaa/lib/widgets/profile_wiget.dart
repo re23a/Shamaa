@@ -9,7 +9,7 @@ class ListProfile extends StatelessWidget {
   });
   final String txt;
   final Icon iconLeading;
-  final Icon iconTrailing;
+  final Widget iconTrailing;
   @override
   Widget build(BuildContext context) {
     return ListTile(
