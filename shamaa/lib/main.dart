@@ -7,6 +7,7 @@ import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
 import 'package:shamaa/blocs/auth_bloc/auth_bloc_bloc.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
+import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/screens/splash_screen.dart';
 import 'package:shamaa/service/supabase_service.dart';
 
@@ -51,7 +52,7 @@ class MainApp extends StatelessWidget {
         ],
         supportedLocales: [Locale('ar')],
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: NavBar(),
       ),
     );
   }
