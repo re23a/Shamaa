@@ -52,7 +52,7 @@ class LessonScreen extends StatelessWidget {
                       color: blue,
                       txt: 'اكتسب المزيد من المعرفة',
                       image: Image.asset(
-                          "assets/DCC2BDA3-1852-4B59-B411-6C6B07CA3C22 3.png")),
+                          "assets/DCC2BDA3-1852-4B59-B411-6C6B07CA3C22 5.png")),
                 )
               ],
             ),

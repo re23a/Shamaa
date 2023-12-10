@@ -6,7 +6,7 @@ import 'package:video_player/video_player.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 
 class VideoScreen extends StatefulWidget {
-  VideoScreen({super.key});
+  const VideoScreen({super.key});
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -14,8 +14,7 @@ class VideoScreen extends StatefulWidget {
 
 class _VideoScreenState extends State<VideoScreen> {
   final FlickManager flickManager = FlickManager(
-    videoPlayerController: VideoPlayerController.asset(
-        'assets/تعليم عملية القسمة للأطفال بطريقة سهلة وبسيطة 2.mp4'),
+    videoPlayerController: VideoPlayerController.asset('assets/vid1.mp4'),
   );
 
   @override
@@ -24,18 +23,18 @@ class _VideoScreenState extends State<VideoScreen> {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
           ),
         ),
-        title: Text("درس عملية القسمة"),
+        title: const Text("درس عملية القسمة"),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 60,
+          const SizedBox(
+            height: 31,
           ),
           Center(
             child: Container(
@@ -44,10 +43,10 @@ class _VideoScreenState extends State<VideoScreen> {
               child: FlickVideoPlayer(flickManager: flickManager),
             ),
           ),
-          SizedBox(
-            height: 30,
+          const SizedBox(
+            height: 72,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +54,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 Text(
                   'ملخص الدرس',
                   style: TextStyle(
-                    color: black,
+                    color: Color(0xFF3A3A3A),
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -66,7 +65,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 Text(
                   '\u2022القسمة هي عملية رياضية تقوم على تقسيم عدد إلى أجزاء\n متساوية.',
                   style: TextStyle(
-                    color: black,
+                    color: Color(0xFF3A3A3A),
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
@@ -77,7 +76,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 Text(
                   "\u2022رمز القسمة هو ÷",
                   style: TextStyle(
-                    color: black,
+                    color: Color(0xFF3A3A3A),
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
@@ -88,7 +87,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 Text(
                   "\u2022مثال: إذا كان لدينا 12 حلوى ونريد توزيعها بالتساوي على 3 أشخاص، يمكننا استخدام القسمة. 12 (عدد الحلوى) ÷ 3 (عدد الأشخاص) = 4 حلوى لكل شخص.",
                   style: TextStyle(
-                    color: black,
+                    color: Color(0xFF3A3A3A),
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
