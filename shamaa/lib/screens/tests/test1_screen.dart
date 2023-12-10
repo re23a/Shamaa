@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shamaa/screens/tests/test2_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shamaa/blocs/test_bloc/test_bloc.dart';
+import 'package:shamaa/blocs/test_bloc/test_event.dart';
+import 'package:shamaa/blocs/test_bloc/test_state.dart';
+import 'package:shamaa/screens/tests/test_result_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/tests_widgets.dart';
@@ -26,64 +30,176 @@ class Test1Screen extends StatelessWidget {
           SizedBox(
             height: 101,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                "assets/stars.png",
-              ),
-              Image.asset(
-                "assets/stars.png",
-              ),
-              Image.asset(
-                "assets/yellow star.png",
-              ),
-            ],
+          BlocBuilder<TestBloc, TestState>(
+            builder: (context, state) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  state.questionIndex >= 2
+                      ? Image.asset(
+                          "assets/yellow star.png",
+                        )
+                      : Image.asset(
+                          "assets/stars.png",
+                        ),
+                  state.questionIndex >= 1
+                      ? Image.asset(
+                          "assets/yellow star.png",
+                        )
+                      : Image.asset(
+                          "assets/stars.png",
+                        ),
+                  state.questionIndex >= 0
+                      ? Image.asset(
+                          "assets/yellow star.png",
+                        )
+                      : Image.asset(
+                          "assets/stars.png",
+                        ),
+                ],
+              );
+            },
           ),
           SizedBox(
             height: 36,
           ),
           Center(
-            child: Column(
-              children: [
-                BoxQusetion(
-                  Q: '3 ÷ 9',
-                ),
-                GridView.count(
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 3,
-                  crossAxisSpacing: 17,
-                  crossAxisCount: 2,
-                  padding: EdgeInsets.symmetric(horizontal: 27, vertical: 24),
-                  shrinkWrap: true,
+            child: BlocBuilder<TestBloc, TestState>(
+              builder: (context, state) {
+                return Column(
                   children: [
-                    BoxAnswer(
-                      txt: '2',
+                    BoxQusetion(
+                      Q: state.questionIndex == 0
+                          ? '3 ÷ 9'
+                          : state.questionIndex == 1
+                              ? '5 ÷ 10'
+                              : '2 ÷ 12',
                     ),
-                    BoxAnswer(
-                      txt: '3',
+                    GridView.count(
+                      mainAxisSpacing: 20,
+                      childAspectRatio: 3,
+                      crossAxisSpacing: 17,
+                      crossAxisCount: 2,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 27, vertical: 24),
+                      shrinkWrap: true,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            context.read<TestBloc>().add(SelectAnswerEvent(
+                                questionIndex: state.questionIndex,
+                                choiceIndex: 0));
+                          },
+                          child: BoxAnswer(
+                            isWrong:
+                                state is CorrectState && state.choiceIndex == 0
+                                    ? state.isWrong
+                                    : false,
+                            isCorrect: state is CorrectState
+                                ? state.questionIndex == 0
+                                : false,
+                            txt: state.questionIndex == 0
+                                ? '3'
+                                : state.questionIndex == 1
+                                    ? '1'
+                                    : '2',
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            context.read<TestBloc>().add(SelectAnswerEvent(
+                                questionIndex: state.questionIndex,
+                                choiceIndex: 1));
+                          },
+                          child: BoxAnswer(
+                            isWrong:
+                                state is CorrectState && state.choiceIndex == 1
+                                    ? state.isWrong
+                                    : false,
+                            isCorrect: state is CorrectState
+                                ? state.questionIndex == 1
+                                : false,
+                            txt: state.questionIndex == 0
+                                ? '2'
+                                : state.questionIndex == 1
+                                    ? '2'
+                                    : '3',
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            context.read<TestBloc>().add(SelectAnswerEvent(
+                                questionIndex: state.questionIndex,
+                                choiceIndex: 2));
+                          },
+                          child: BoxAnswer(
+                            isWrong:
+                                state is CorrectState && state.choiceIndex == 2
+                                    ? state.isWrong
+                                    : false,
+                            isCorrect: state is CorrectState
+                                ? state.questionIndex == 2
+                                : false,
+                            txt: state.questionIndex == 0
+                                ? '1'
+                                : state.questionIndex == 1
+                                    ? '5'
+                                    : '6',
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            context.read<TestBloc>().add(SelectAnswerEvent(
+                                questionIndex: state.questionIndex,
+                                choiceIndex: 3));
+                          },
+                          child: BoxAnswer(
+                            isWrong:
+                                state is CorrectState && state.choiceIndex == 3
+                                    ? state.isWrong
+                                    : false,
+                            isCorrect: false,
+                            txt: state.questionIndex == 0
+                                ? '6'
+                                : state.questionIndex == 1
+                                    ? '3'
+                                    : '4',
+                          ),
+                        ),
+                      ],
                     ),
-                    BoxAnswer(
-                      txt: '1',
+                    SizedBox(
+                      height: 32,
                     ),
-                    BoxAnswer(
-                      txt: '6',
-                    ),
+                    BlocBuilder<TestBloc, TestState>(
+                      builder: (context, state) {
+                        if (state is CorrectState) {
+                          return InkWell(
+                              onTap: () {
+                                if (state.questionIndex == 2) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              TestResultScreen()));
+                                }
+
+                                context.read<TestBloc>().add(NextQuestionEvent(
+                                    questionIndex: state.questionIndex));
+                              },
+                              child: CustomButtomBig(
+                                  text: state.questionIndex == 2
+                                      ? 'عرض النتائج'
+                                      : "السؤال التالي",
+                                  color: purple));
+                        } else {
+                          return Container();
+                        }
+                      },
+                    )
                   ],
-                ),
-                SizedBox(
-                  height: 32,
-                ),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Test2Screen()));
-                    },
-                    child:
-                        CustomButtomBig(text: "السؤال التالي", color: purple))
-              ],
+                );
+              },
             ),
           )
         ],

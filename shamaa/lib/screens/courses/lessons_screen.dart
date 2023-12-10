@@ -22,6 +22,10 @@ class LessonsScreen extends StatelessWidget {
       body: Column(
         children: [
           InkWell(
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return LessonScreen();
