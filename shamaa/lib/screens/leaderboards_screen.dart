@@ -46,7 +46,7 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
                   const SizedBox(height: 14),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       _buildThirdLeaderboard(sortedAccounts[2]),
                       _buildTopLeaderboard(sortedAccounts[0]),
@@ -123,7 +123,7 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
             Image.asset("assets/text with three stars.png")
           ],
         ),
-        Image.asset("assets/win.png"),
+        Image.asset("assets/Group 632712.png"),
       ],
     );
   }
@@ -142,7 +142,7 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
             Image.asset("assets/text with three stars.png")
           ],
         ),
-        Image.asset("assets/win.png"),
+        Image.asset("assets/Group 632711.png"),
       ],
     );
   }

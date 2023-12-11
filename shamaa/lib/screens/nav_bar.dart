@@ -24,16 +24,13 @@ class _NavBarState extends State<NavBar> {
       selectedIconColor: white,
       unselectedIconColor: white,
       items: [
+        FloatingNavBarItem(iconData: Icons.home, page: HomeScreen(), title: ''),
         FloatingNavBarItem(
-            iconData: Icons.home_outlined, page: HomeScreen(), title: ''),
-        FloatingNavBarItem(
-            iconData: Icons.local_activity_rounded,
+            iconData: Icons.wallet_giftcard,
             page: LeaderboardsScreen(),
             title: ''),
         FloatingNavBarItem(
-            iconData: Icons.person_outline_outlined,
-            page: ProfileScreen(),
-            title: ''),
+            iconData: Icons.person, page: ProfileScreen(), title: ''),
       ],
       horizontalPadding: 15.0,
       hapticFeedback: true,
