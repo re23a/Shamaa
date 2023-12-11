@@ -25,7 +25,13 @@ class EditProfilScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.only(top: 203),
+              child: Image.asset("assets/o.png"),
+            ),
+            const SizedBox(
+              height: 70,
+            ),
             InkWell(
               onTap: () {
                 // Logic to navigate to the Update Account Screen
@@ -38,11 +44,10 @@ class EditProfilScreen extends StatelessWidget {
               },
               child: CustomButtomBig(
                   text: "تحديث الحساب",
-                  color:
-                      lightGrey), // Replace lightGrey with your desired color
+                  color: purple), // Replace lightGrey with your desired color
             ),
             const SizedBox(
-              height: 30,
+              height: 12,
             ),
             InkWell(
                 onTap: () {
