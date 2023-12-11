@@ -29,6 +29,6 @@ class CorrectState extends CompetitionState {
       {required super.wordIndex, required super.letterIndex});
 }
 
-// class WrongState extends CompetitionState {
-//   WrongState({required super.word, required super.index});
-// }
+class WrongState extends CompetitionState {
+  WrongState({required super.wordIndex, required super.letterIndex});
+}

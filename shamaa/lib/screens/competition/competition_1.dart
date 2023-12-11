@@ -4,6 +4,7 @@ import 'package:shamaa/blocs/competition_bloc/competition_bloc.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_event.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_state.dart';
 import 'package:shamaa/screens/competition/gamification_screen.dart';
+import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/letters_container.dart';
 
@@ -73,17 +74,21 @@ class Competition1 extends StatelessWidget {
               children: [
                 BlocBuilder<CompetitionBloc, CompetitionState>(
                   builder: (context, state) {
-                    return Container(
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.bounceIn,
                       width: 336,
                       height: 227,
                       decoration: ShapeDecoration(
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -172,13 +177,15 @@ class Competition1 extends StatelessWidget {
                           context.read<CompetitionBloc>().add(EnterCharEvent(
                               wordIndex: state.wordIndex, charIndex: 0));
                         },
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         text: state.wordIndex == 0
                             ? "T"
                             : state.wordIndex == 1
@@ -192,13 +199,15 @@ class Competition1 extends StatelessWidget {
                           context.read<CompetitionBloc>().add(EnterCharEvent(
                               wordIndex: state.wordIndex, charIndex: 1));
                         },
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         text: state.wordIndex == 0
                             ? "S"
                             : state.wordIndex == 1
@@ -212,13 +221,15 @@ class Competition1 extends StatelessWidget {
                           context.read<CompetitionBloc>().add(EnterCharEvent(
                               wordIndex: state.wordIndex, charIndex: 2));
                         },
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         text: state.wordIndex == 0
                             ? "R"
                             : state.wordIndex == 1
@@ -232,13 +243,15 @@ class Competition1 extends StatelessWidget {
                           context.read<CompetitionBloc>().add(EnterCharEvent(
                               wordIndex: state.wordIndex, charIndex: 3));
                         },
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         text: state.wordIndex == 0
                             ? "H"
                             : state.wordIndex == 1
@@ -252,13 +265,15 @@ class Competition1 extends StatelessWidget {
                           context.read<CompetitionBloc>().add(EnterCharEvent(
                               wordIndex: state.wordIndex, charIndex: 4));
                         },
-                        color: state.wordIndex == 0
-                            ? lightgreen
-                            : state.wordIndex == 1
-                                ? yellow
-                                : state.wordIndex == 2
-                                    ? purple
-                                    : blue,
+                        color: state is WrongState
+                            ? Colors.redAccent
+                            : state.wordIndex == 0
+                                ? lightgreen
+                                : state.wordIndex == 1
+                                    ? yellow
+                                    : state.wordIndex == 2
+                                        ? purple
+                                        : blue,
                         text: state.wordIndex == 0
                             ? "I"
                             : state.wordIndex == 1
@@ -298,8 +313,9 @@ class Competition1 extends StatelessWidget {
             },
           ),
           BlocListener<CompetitionBloc, CompetitionState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is EndState) {
+                await increaseAccountStars(15);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
@@ -309,7 +325,7 @@ class Competition1 extends StatelessWidget {
               }
             },
             child: Container(),
-          )
+          ),
         ],
       ),
     );

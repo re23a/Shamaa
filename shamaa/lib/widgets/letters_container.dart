@@ -14,7 +14,9 @@ class LettersContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.bounceIn,
         width: 53,
         height: 53,
         decoration: ShapeDecoration(

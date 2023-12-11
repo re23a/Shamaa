@@ -30,6 +30,9 @@ class CompetitionBloc extends Bloc<CompetitionEvent, CompetitionState> {
               : emit(EndState(wordIndex: event.wordIndex, letterIndex: 0));
           charCount = 0;
         }
+      } else {
+        emit(WrongState(
+            wordIndex: event.wordIndex, letterIndex: event.charIndex));
       }
     });
   }
