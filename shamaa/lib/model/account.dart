@@ -40,4 +40,24 @@ class Account {
       'stars': stars,
     };
   }
+
+  Account copyWith({
+    int? id,
+    String? userId,
+    String? name,
+    DateTime? dateOfBirth,
+    String? studentClass,
+    int? creatureIndex,
+    int? stars,
+  }) {
+    return Account(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      studentClass: studentClass ?? this.studentClass,
+      creatureIndex: creatureIndex ?? this.creatureIndex,
+      stars: stars ?? this.stars,
+    );
+  }
 }

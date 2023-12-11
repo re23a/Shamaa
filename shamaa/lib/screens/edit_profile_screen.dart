@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/delete_account_screen.dart';
+import 'package:shamaa/screens/update_account/updatea_ccs_creen.dart';
 import 'package:shamaa/style/custom_colors.dart';
-import 'package:shamaa/widgets/CoustomTextField.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
+// ignore: must_be_immutable
 class EditProfilScreen extends StatelessWidget {
   EditProfilScreen({super.key});
-  // DateTime dateTime = DateTime.now();
-  // final dateController = TextEditingController();
-  // final gradeController = TextEditingController();
-  // final userNameController = TextEditingController();
   String? selectedGrade;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,23 @@ class EditProfilScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(height: 30),
+            InkWell(
+              onTap: () {
+                // Logic to navigate to the Update Account Screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          UpdateAccScreen()), // Replace with your actual update screen
+                );
+              },
+              child: CustomButtomBig(
+                  text: "تحديث الحساب",
+                  color:
+                      lightGrey), // Replace lightGrey with your desired color
+            ),
+            const SizedBox(
               height: 30,
             ),
             InkWell(

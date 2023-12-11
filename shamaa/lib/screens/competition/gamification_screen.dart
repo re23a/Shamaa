@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shamaa/screens/leaderboards_screen.dart';
 import 'package:shamaa/screens/nav_bar.dart';
+import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
@@ -54,7 +55,7 @@ class GamificationScreen extends StatelessWidget {
                 height: 20,
               ),
               InkWell(
-                onTap: () {
+                onTap: () async {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const NavBar();
                   }));

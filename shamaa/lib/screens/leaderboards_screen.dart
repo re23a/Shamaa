@@ -40,15 +40,25 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
               sortedAccounts.sort((a, b) => b.stars.compareTo(a.stars));
 
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 14),
-                  _buildTopLeaderboard(sortedAccounts.first),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildThirdLeaderboard(sortedAccounts[2]),
+                      _buildTopLeaderboard(sortedAccounts[0]),
+                      _buildSecondLeaderboard(sortedAccounts[1]),
+                    ],
+                  ),
                   Expanded(
                     child: ListView.builder(
                       padding: EdgeInsets.only(bottom: 100),
                       itemCount: sortedAccounts.length - 1,
                       itemBuilder: (context, index) {
-                        final account = sortedAccounts[index + 1];
+                        final account = sortedAccounts[index];
                         return _buildLeaderboardRow(
                             account.name,
                             account.stars.toString(),
@@ -57,6 +67,12 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
                       },
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Container(
+                      color: white,
+                    ),
+                  )
                 ],
               );
             } else {
@@ -75,6 +91,44 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
   }
 
   Widget _buildTopLeaderboard(Account account) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset("assets/c${account.creatureIndex + 1}.png"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(account.name),
+            const SizedBox(width: 5),
+            Text(account.stars.toString()),
+            Image.asset("assets/text with three stars.png")
+          ],
+        ),
+        Image.asset("assets/win.png"),
+      ],
+    );
+  }
+
+  Widget _buildSecondLeaderboard(Account account) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset("assets/c${account.creatureIndex + 1}.png"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(account.name),
+            const SizedBox(width: 5),
+            Text(account.stars.toString()),
+            Image.asset("assets/text with three stars.png")
+          ],
+        ),
+        Image.asset("assets/win.png"),
+      ],
+    );
+  }
+
+  Widget _buildThirdLeaderboard(Account account) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
