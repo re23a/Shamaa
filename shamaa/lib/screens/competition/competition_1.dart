@@ -303,7 +303,7 @@ class Competition1 extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GamificationScreen()),
+                          builder: (context) => GamificationScreen()),
                       (Route<dynamic> route) => false,
                     );
                   }
@@ -318,8 +318,7 @@ class Competition1 extends StatelessWidget {
                 await increaseAccountStars(15);
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const GamificationScreen()),
+                  MaterialPageRoute(builder: (context) => GamificationScreen()),
                   (Route<dynamic> route) => false,
                 );
               }

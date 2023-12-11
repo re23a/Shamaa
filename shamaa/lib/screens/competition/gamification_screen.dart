@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:shamaa/screens/leaderboards_screen.dart';
 import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
+import 'package:video_player/video_player.dart';
 
 class GamificationScreen extends StatelessWidget {
-  const GamificationScreen({super.key});
-
+  GamificationScreen({super.key});
+  final assetsAudioPlayer = AssetsAudioPlayer();
   @override
   Widget build(BuildContext context) {
+    assetsAudioPlayer.open(
+      Audio("assets/audio.mp4"),
+    );
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -31,7 +35,7 @@ class GamificationScreen extends StatelessWidget {
           Center(child: Image.asset("assets/Frame 632594.png")),
           Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
               const Text(
