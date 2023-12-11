@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shamaa/screens/nav_bar.dart';
@@ -5,10 +6,13 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
 class TestResultScreen extends StatelessWidget {
-  const TestResultScreen({super.key});
-
+  TestResultScreen({super.key});
+  final assetsAudioPlayer = AssetsAudioPlayer();
   @override
   Widget build(BuildContext context) {
+    assetsAudioPlayer.open(
+      Audio("assets/audio.mp4"),
+    );
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(

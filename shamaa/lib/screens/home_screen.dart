@@ -314,7 +314,7 @@ class HomeScreen extends StatelessWidget {
                                         }))
                                       : Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                          return const GamificationScreen();
+                                          return GamificationScreen();
                                         }));
                                 },
                                 child: Competitions(
