@@ -8,7 +8,8 @@ import 'package:floating_navbar/floating_navbar_item.dart';
 import 'package:shamaa/style/custom_colors.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  const NavBar({super.key, this.index});
+  final int? index;
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -30,7 +31,9 @@ class _NavBarState extends State<NavBar> {
             page: LeaderboardsScreen(),
             title: ''),
         FloatingNavBarItem(
-            iconData: Icons.person, page: ProfileScreen(), title: ''),
+            iconData: Icons.person,
+            page: ProfileScreen(index: widget.index),
+            title: ''),
       ],
       horizontalPadding: 15.0,
       hapticFeedback: true,

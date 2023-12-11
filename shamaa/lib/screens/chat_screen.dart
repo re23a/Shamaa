@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/style/custom_colors.dart';
-import 'package:shamaa/widgets/chat_container.dart';
 import 'package:shamaa/widgets/textFeild_chat.dart';
 
 class ChatScreen extends StatelessWidget {

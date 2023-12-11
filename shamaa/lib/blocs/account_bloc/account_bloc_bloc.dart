@@ -14,6 +14,7 @@ class AccountBlocBloc extends Bloc<AccountBlocEvent, AccountBlocState> {
     on<FetchAccounts>(_onFetchAccounts);
     on<FetchAccount>(_onFetchAccount);
     on<CreateAccountEvent>(_onCreateAccount);
+    on<FetchAccountId>(_onFetchAccountsID);
   }
 
   Future<void> _onFetchAccounts(
@@ -33,18 +34,56 @@ class AccountBlocBloc extends Bloc<AccountBlocEvent, AccountBlocState> {
   }
 
   Future<void> _onFetchAccount(
-      FetchAccount event, Emitter<AccountBlocState> emit) async {
+    FetchAccount event,
+    Emitter<AccountBlocState> emit,
+  ) async {
     emit(AccountLoadingState());
     try {
       final response = await supabaseClient
           .from('account')
           .select()
           .eq('user_id', getCurrentUserId)
-          .single()
           .execute();
-      if (response.data != null) {
-        final Account accounts = Account.fromMap(response.data);
-        emit(GetUserSuccessState(accounts));
+
+      if (response.data != null && response.data.isNotEmpty) {
+        final List<Account> accounts = (response.data as List)
+            .map((accountData) => Account.fromMap(accountData))
+            .toList();
+
+        // Use accountIndex if it's not null and within range, otherwise default to 0
+        final int? index =
+            event.Numaber != null && event.Numaber! < accounts.length
+                ? event.Numaber
+                : 0;
+
+        emit(GetUserSuccessState(
+            accounts[index!])); // Emit success state with the specified account
+      } else {
+        emit(AccountErrorState('No account found'));
+      }
+    } catch (error) {
+      emit(AccountErrorState(error.toString()));
+      print(error);
+    }
+  }
+
+  Future<void> _onFetchAccountsID(
+      FetchAccountId event, Emitter<AccountBlocState> emit) async {
+    emit(AccountLoadingState());
+    try {
+      final response = await supabaseClient
+          .from('account')
+          .select()
+          .eq('user_id',
+              getCurrentUserId) // Make sure this gets the current user ID
+          .execute();
+
+      if (response.data != null && response.data.isNotEmpty) {
+        final List<Account> accounts = (response.data as List)
+            .map((accountData) => Account.fromMap(accountData))
+            .toList();
+
+        emit(GetUsersSuccessState(accounts));
       } else {
         emit(AccountErrorState('No account found'));
       }

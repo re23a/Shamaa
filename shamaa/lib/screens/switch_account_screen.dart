@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/screens/nav_bar.dart';
+import 'package:shamaa/screens/profile_screen.dart';
 import 'package:shamaa/screens/sign_up/inf_acc_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
+import 'package:shamaa/model/account.dart';
 import 'package:shamaa/style/custom_colors.dart';
 
-class SwitchAccountScreen extends StatelessWidget {
-  const SwitchAccountScreen({super.key});
+class SwitchAccountScreen extends StatefulWidget {
+  const SwitchAccountScreen({Key? key}) : super(key: key);
+
+  @override
+  _SwitchAccountScreenState createState() => _SwitchAccountScreenState();
+}
+
+class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AccountBlocBloc>().add(FetchAccountId());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,31 +27,73 @@ class SwitchAccountScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-          ),
-        ),
         title: const Text("تبديل الحساب"),
       ),
-      body: Column(
+      body: BlocBuilder<AccountBlocBloc, AccountBlocState>(
+        builder: (context, state) {
+          if (state is AccountLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is GetUsersSuccessState) {
+            return _buildSuccessState(state.accounts);
+          } else if (state is AccountErrorState) {
+            return _buildErrorState(state.message);
+          }
+          return _buildUnknownState();
+        },
+      ),
+    );
+  }
+
+  Widget _buildSuccessState(List<Account> accounts) {
+    return Column(
+      children: [
+        Expanded(child: _buildAccountsList(accounts)),
+        _buildAddAccountTile(),
+      ],
+    );
+  }
+
+  Widget _buildErrorState(String message) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 30,
-          ),
-          Center(
-            child: Container(
-              width: 335.92,
-              height: 84,
-              padding: const EdgeInsets.all(6),
-              decoration: ShapeDecoration(
-                color: Color(0xFFF7F7F9),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-              child: Row(children: [
+          Text(message),
+          _buildAddAccountTile(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildUnknownState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Unknown state'),
+          _buildAddAccountTile(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAccountsList(List<Account> accounts) {
+    return ListView.builder(
+      itemCount: accounts.length,
+      itemBuilder: (BuildContext context, int index) {
+        return InkWell(
+          onTap: () {
+            context.read<AccountBlocBloc>().add(FetchAccount(Numaber: index));
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => NavBar(index: index)),
+              (Route<dynamic> route) => false,
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: Row(
+              children: [
                 Container(
                   width: 72,
                   height: 72,
@@ -45,101 +103,87 @@ class SwitchAccountScreen extends StatelessWidget {
                       side: BorderSide(width: 0.69, color: Color(0xFF3A3A3A)),
                     ),
                   ),
-                  child: Image.asset("assets/c3.png"),
+                  child: Image.asset(
+                      "assets/c${accounts[index].creatureIndex + 1}.png"),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'عبدالله محمد',
-                      style: TextStyle(
-                        color: black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                        height: 0,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        accounts[index].name,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'الصف الثالث الابتدائي',
-                      style: TextStyle(
-                        color: black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        accounts[index].studentClass,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-                const SizedBox(
-                  width: 30,
-                ),
+                const SizedBox(width: 10),
                 Row(
                   children: [
                     Text(
-                      '33',
-                      style: TextStyle(
-                        color: black,
+                      accounts[index].stars.toString(),
+                      style: const TextStyle(
+                        color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Image.asset("assets/yellow star.png")
+                    Image.asset("assets/yellow star.png"),
                   ],
-                )
-              ]),
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Container(
-            width: 335.92,
-            height: 84,
-            padding: const EdgeInsets.all(6),
-            decoration: ShapeDecoration(
-              color: Color(0xFFF7F7F9),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            child: Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => InfAccScreen()));
-                  },
-                  child: Container(
-                    width: 72,
-                    height: 72,
-                    decoration: const ShapeDecoration(
-                      color: Colors.white,
-                      shape: OvalBorder(
-                        side: BorderSide(width: 0.69, color: Color(0xFF3A3A3A)),
-                      ),
-                    ),
-                    child: Icon(Icons.add),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "اضافة حساب جديد",
-                  style: TextStyle(
-                    color: black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w400,
-                  ),
                 ),
               ],
             ),
-          )
-        ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildAddAccountTile() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const InfAccScreen()));
+      },
+      child: Container(
+        width: 335.92,
+        height: 84,
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          color: Colors.grey, // Assuming this is the color
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: const Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 36,
+              child: Icon(Icons.add, size: 36),
+            ),
+            SizedBox(width: 10),
+            Text(
+              "اضافة حساب جديد",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 24,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

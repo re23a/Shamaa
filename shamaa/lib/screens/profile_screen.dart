@@ -6,8 +6,8 @@ import 'package:shamaa/screens/switch_account_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
-
+  const ProfileScreen({super.key, this.index});
+  final int? index;
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
@@ -15,7 +15,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
-    context.read<AccountBlocBloc>().add(FetchAccount());
+    context.read<AccountBlocBloc>().add(FetchAccount(Numaber: widget.index));
   }
 
   @override
@@ -39,7 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SettingsScreen()));
+                          builder: (context) =>
+                              SettingsScreen(index: widget.index)));
                 },
                 child: Icon(Icons.settings)),
           )
