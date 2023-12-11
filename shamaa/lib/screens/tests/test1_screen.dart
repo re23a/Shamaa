@@ -4,6 +4,7 @@ import 'package:shamaa/blocs/test_bloc/test_bloc.dart';
 import 'package:shamaa/blocs/test_bloc/test_event.dart';
 import 'package:shamaa/blocs/test_bloc/test_state.dart';
 import 'package:shamaa/screens/tests/test_result_screen.dart';
+import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:shamaa/widgets/tests_widgets.dart';
@@ -175,8 +176,9 @@ class Test1Screen extends StatelessWidget {
                       builder: (context, state) {
                         if (state is CorrectState) {
                           return InkWell(
-                              onTap: () {
+                              onTap: () async {
                                 if (state.questionIndex == 2) {
+                                  await increaseAccountStars(15);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
