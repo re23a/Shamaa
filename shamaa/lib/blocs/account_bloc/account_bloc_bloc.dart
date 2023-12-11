@@ -12,6 +12,7 @@ class AccountBlocBloc extends Bloc<AccountBlocEvent, AccountBlocState> {
 
   AccountBlocBloc() : super(AccountBlocInitial()) {
     on<FetchAccounts>(_onFetchAccounts);
+    on<FetchAccount>(_onFetchAccount);
     on<CreateAccountEvent>(_onCreateAccount);
   }
 
@@ -25,6 +26,28 @@ class AccountBlocBloc extends Bloc<AccountBlocEvent, AccountBlocState> {
           data.map((accountData) => Account.fromMap(accountData)).toList();
 
       emit(GetUsersSuccessState(accounts));
+    } catch (error) {
+      emit(AccountErrorState(error.toString()));
+      print(error);
+    }
+  }
+
+  Future<void> _onFetchAccount(
+      FetchAccount event, Emitter<AccountBlocState> emit) async {
+    emit(AccountLoadingState());
+    try {
+      final response = await supabaseClient
+          .from('account')
+          .select()
+          .eq('user_id', getCurrentUserId)
+          .single()
+          .execute();
+      if (response.data != null) {
+        final Account accounts = Account.fromMap(response.data);
+        emit(GetUserSuccessState(accounts));
+      } else {
+        emit(AccountErrorState('No account found'));
+      }
     } catch (error) {
       emit(AccountErrorState(error.toString()));
       print(error);

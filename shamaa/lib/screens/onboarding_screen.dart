@@ -7,8 +7,8 @@ import 'package:shamaa/screens/welcome_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
-class Onbaording extends StatelessWidget {
-  const Onbaording({super.key});
+class Onboarding extends StatelessWidget {
+  const Onboarding({super.key});
 
   @override
   Widget build(BuildContext context) {

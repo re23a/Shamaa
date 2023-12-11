@@ -10,6 +10,12 @@ class GetUsersSuccessState extends AccountBlocState {
   GetUsersSuccessState(this.accounts);
 }
 
+class GetUserSuccessState extends AccountBlocState {
+  final Account account;
+
+  GetUserSuccessState(this.account);
+}
+
 class AccountLoadingState extends AccountBlocState {}
 
 class AccountErrorState extends AccountBlocState {
