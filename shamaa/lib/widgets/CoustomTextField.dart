@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/style/custom_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -14,20 +15,29 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25),
+    return Container(
+      padding: isPassword
+          ? EdgeInsets.symmetric(horizontal: 0)
+          : EdgeInsets.symmetric(horizontal: 10),
+      width: 336,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: ExtraLightGrey),
       child: TextField(
         controller: controller,
         obscureText: isPassword,
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          hintText: hintText,
-          prefixIcon: Icon(
-            isPassword ? Icons.lock : Icons.text_fields,
-          ),
-        ),
+            border: InputBorder.none,
+            hintText: hintText,
+            focusedBorder: InputBorder.none,
+            hintStyle:
+                const TextStyle(color: Color.fromARGB(255, 158, 158, 158)),
+            prefixIcon: isPassword
+                ? Icon(
+                    Icons.lock,
+                    color: Color.fromARGB(255, 158, 158, 158),
+                  )
+                : null),
       ),
     );
   }
