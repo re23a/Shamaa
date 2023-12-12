@@ -4,11 +4,13 @@ import 'package:shamaa/style/custom_colors.dart';
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
     super.key,
-    // required this.controller,
+    required this.controller,
+    required this.onPressed,
     // required this.toUserId,
   });
 
-  // final TextEditingController controller;
+  final TextEditingController controller;
+  final Function() onPressed;
   // final String toUserId;
 
   @override
@@ -20,10 +22,10 @@ class ChatTextField extends StatelessWidget {
       child: TextField(
         minLines: 1,
         maxLines: 4,
-        // controller: controller,
+        controller: controller,
         decoration: InputDecoration(
             suffixIcon: IconButton(
-              onPressed: () {},
+              onPressed: onPressed,
               icon: const Icon(Icons.send),
             ),
             filled: true,

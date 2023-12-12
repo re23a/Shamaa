@@ -21,7 +21,9 @@ dependencies:
     sdk: flutter
   flutter_snake_navigationbar: ^0.6.1
   get_storage: ^2.1.1
+  http: ^1.1.2
   linear_progress_bar: ^1.1.0
+  progress_indicators: ^1.0.0
   progresso: ^0.3.0
   supabase_flutter: ^1.10.25
   video_player: ^2.8.1

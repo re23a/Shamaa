@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
 import 'package:shamaa/blocs/auth_bloc/auth_bloc_bloc.dart';
 import 'package:shamaa/blocs/auth_bloc/auth_bloc_event.dart';
+import 'package:shamaa/blocs/chat_gpt_bloc/chat_bloc.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
 import 'package:shamaa/blocs/test_bloc/test_bloc.dart';
@@ -49,11 +50,11 @@ class MainApp extends StatelessWidget {
         BlocProvider<TestBloc>(
           create: (BuildContext context) => TestBloc(),
         ),
-      ],
-      child: MaterialApp(
-        theme: ThemeData(
-          dividerColor: Colors.transparent,
+        BlocProvider<ChatBloc>(
+          create: (BuildContext context) => ChatBloc(),
         ),
+      ],
+      child: const MaterialApp(
         locale: Locale('ar'),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
