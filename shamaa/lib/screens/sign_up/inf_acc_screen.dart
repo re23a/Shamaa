@@ -83,8 +83,14 @@ class _InfAccScreenState extends State<InfAccScreen> {
           onTap: () => _selectDate(context),
           child: InputDecorator(
             decoration: InputDecoration(
+              enabledBorder: const OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: Colors.transparent, width: 0.0),
+              ),
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+              filled: true,
+              fillColor: ExtraLightGrey,
               hintText: 'ادخل تاريخ الميلاد',
             ),
             child: Text(dateController.text),
@@ -95,21 +101,24 @@ class _InfAccScreenState extends State<InfAccScreen> {
     await showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
-        return Container(
-          height: MediaQuery.of(context).copyWith().size.height / 3,
-          width: MediaQuery.of(context).copyWith().size.width / 2,
-          child: CupertinoDatePicker(
-            minimumYear: 2000,
-            maximumYear: DateTime.now().year,
-            initialDateTime: dateTime,
-            mode: CupertinoDatePickerMode.date,
-            onDateTimeChanged: (newDateTime) {
-              setState(() {
-                dateTime = newDateTime;
-                dateController.text = DateFormat('yyyy/MM/dd').format(dateTime);
-                print(dateController.text);
-              });
-            },
+        return Center(
+          child: Container(
+            height: MediaQuery.of(context).copyWith().size.height / 3,
+            width: MediaQuery.of(context).copyWith().size.width / 2,
+            child: CupertinoDatePicker(
+              minimumYear: 2000,
+              maximumYear: DateTime.now().year,
+              initialDateTime: dateTime,
+              mode: CupertinoDatePickerMode.date,
+              onDateTimeChanged: (newDateTime) {
+                setState(() {
+                  dateTime = newDateTime;
+                  dateController.text =
+                      DateFormat('yyyy/MM/dd').format(dateTime);
+                  print(dateController.text);
+                });
+              },
+            ),
           ),
         );
       },
@@ -121,7 +130,12 @@ class _InfAccScreenState extends State<InfAccScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 28),
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: purple, width: 1.0)),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.transparent, width: 0.0),
+          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           filled: true,
           fillColor: ExtraLightGrey,
         ),
