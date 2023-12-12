@@ -50,7 +50,10 @@ class MainApp extends StatelessWidget {
           create: (BuildContext context) => TestBloc(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(
+          dividerColor: Colors.transparent,
+        ),
         locale: Locale('ar'),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
