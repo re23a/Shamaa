@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:progresso/progresso.dart';
-import 'package:shamaa/screens/courses/lessons_screen.dart';
+import 'package:shamaa/screens/Courses/lessons_screen.dart';
 import 'package:shamaa/screens/empty_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 
 class ChapterScreen extends StatelessWidget {
-  const ChapterScreen({super.key});
+  const ChapterScreen({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -243,25 +244,35 @@ class ChapterScreen extends StatelessWidget {
                             const SizedBox(
                               height: 22,
                             ),
-                            Container(
-                              width: 214,
-                              height: 34,
-                              decoration: ShapeDecoration(
-                                  color: Color(0xFFE4C1F9),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  )),
-                              child: const Center(
-                                child: Text(
-                                  'ابدأ رحلتك',
-                                  style: TextStyle(
-                                    color: Color(0xFF3A3A3A),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                            InkWell(onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return LessonsScreen(
+                                  index: index,
+                                );
+                              }));
+
+                              Container(
+                                width: 214,
+                                height: 34,
+                                decoration: ShapeDecoration(
+                                    color: Color(0xFFE4C1F9),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    )),
+                                child: const Center(
+                                  child: Text(
+                                    'ابدأ رحلتك',
+                                    style: TextStyle(
+                                      color: Color(0xFF3A3A3A),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
+                              );
+                            }
+                            )
                           ],
                         )
                       ],

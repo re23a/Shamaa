@@ -10,8 +10,8 @@ import 'package:shamaa/widgets/profile_wiget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
-
+  const SettingsScreen({super.key, this.index});
+  final int? index;
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -19,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
-    context.read<AccountBlocBloc>().add(FetchAccount());
+    context.read<AccountBlocBloc>().add(FetchAccount(Numaber: widget.index));
   }
 
   bool switchValue = true;
@@ -111,7 +111,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EditProfilScreen()));
+                              builder: (context) => EditProfilScreen(
+                                    index: widget.index,
+                                  )));
                     },
                     child: const ListProfile(
                       txt: 'اعدادات الحساب',

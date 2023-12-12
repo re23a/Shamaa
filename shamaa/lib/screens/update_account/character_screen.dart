@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamaa/model/account.dart';
 import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
@@ -11,10 +12,13 @@ class Update_character_screen extends StatefulWidget {
       {super.key,
       required this.userName,
       required this.dateOfBirth,
-      required this.grade});
+      required this.grade,
+      this.index});
   final String userName;
   final String dateOfBirth;
   final String grade;
+  final int? index;
+
   @override
   _Update_character_screenState createState() =>
       _Update_character_screenState();
@@ -115,13 +119,16 @@ class _Update_character_screenState extends State<Update_character_screen> {
             return;
           }
           try {
-            await updateAccount(
-              name: widget.userName,
+            DateTime parsedDateOfBirth = DateTime.parse(widget.dateOfBirth);
+
+            Account account = Account(
+              userId: widget.index.toString(),
+              name: widget.toString(),
               dateOfBirth: parsedDateOfBirth,
               studentClass: widget.grade,
               creatureIndex: selectedCharacterIndex,
             );
-            // Handle success (navigate or show a message)
+            await updateAccount(account, widget.index);
           } catch (e) {
             // Handle error (show a message)
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -134,7 +141,10 @@ class _Update_character_screenState extends State<Update_character_screen> {
           // ignore: use_build_context_synchronously
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const NavBar()),
+            MaterialPageRoute(
+                builder: (context) => NavBar(
+                      index: widget.index,
+                    )),
             (Route<dynamic> route) => false,
           );
         } else {

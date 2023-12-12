@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:shamaa/screens/welcome_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -53,7 +52,6 @@ class DeleteAccountScreen extends StatelessWidget {
                           .execute();
 
                       // Delete the token from local storage
-                      GetStorage authData = GetStorage('authLocalDataBase');
 
                       await client.auth.signOut();
                       // ignore: use_build_context_synchronously

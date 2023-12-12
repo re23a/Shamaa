@@ -16,7 +16,6 @@ import 'package:shamaa/service/supabase_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-
   await supabaseConfig();
   await GetStorage.init("authLocalDataBase");
   await GetStorage.init("userLocalDataBase");

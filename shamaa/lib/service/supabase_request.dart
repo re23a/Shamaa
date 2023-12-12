@@ -1,55 +1,59 @@
 import 'package:shamaa/model/account.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<void> increaseAccountStars(int incrementStars) async {
+Future<void> increaseAccountStars(int incrementStars, int? accountIndex) async {
   final SupabaseClient client = Supabase.instance.client;
+  if (client.auth.currentUser == null) {
+    print('No authenticated user found.');
+    return;
+  }
+  String userId = client.auth.currentUser!.id;
   try {
-    final fetchResponse = await client
-        .from('account')
-        .select()
-        .eq('user_id', client.auth.currentUser!.id)
-        .single()
-        .execute();
-    if (fetchResponse.data == null) {
-      throw Exception('Account not found');
+    final response =
+        await client.from('account').select().eq('user_id', userId).execute();
+    List<dynamic> accountData = response.data;
+    if (accountData.isEmpty) {
+      print('No accounts found for user.');
+      return;
     }
-    final Account currentAccount = Account.fromMap(fetchResponse.data);
-    final newStarCount = currentAccount.stars + incrementStars;
+    List<Account> accounts =
+        accountData.map((data) => Account.fromMap(data)).toList();
+    int selectedAccountIndex =
+        accountIndex != null && accountIndex < accounts.length
+            ? accountIndex
+            : 0;
+    if (selectedAccountIndex < 0 || selectedAccountIndex >= accounts.length) {
+      print('Index out of range.');
+      return;
+    }
+
+    Account selectedAccount = accounts[selectedAccountIndex];
+    int newStarCount = selectedAccount.stars + incrementStars;
+
     await client
         .from('account')
         .update({'stars': newStarCount})
-        .eq('user_id', client.auth.currentUser!.id)
+        .eq('user_id', userId)
+        .eq('id', selectedAccount.id)
         .execute();
   } catch (e) {
-    print('Error updating account stars: $e');
+    print('Exception occurred: $e');
   }
-
-//  TO USE  await increaseAccountStars(5);
 }
 
-Future<void> updateAccount({
-  String? name,
-  DateTime? dateOfBirth,
-  String? studentClass,
-  int? creatureIndex,
-}) async {
+Future<void> updateAccount(Account account, int? index) async {
   final SupabaseClient client = Supabase.instance.client;
+  String userId = client.auth.currentUser!.id;
 
   try {
-    final Map<String, dynamic> updateData = {
-      if (name != null) 'name': name,
-      if (dateOfBirth != null) 'date_of_birth': dateOfBirth.toIso8601String(),
-      if (studentClass != null) 'student_class': studentClass,
-      if (creatureIndex != null) 'creature_index': creatureIndex,
-    };
+    final Map<String, dynamic> updateData = account.toMap();
+    print(updateData[index]);
     await client
         .from('account')
         .update(updateData)
-        .eq('user_id', client.auth.currentUser!.id)
-        .execute();
+        .eq('user_id', userId)
+        .eq("id", account.id);
   } catch (e) {
     print('Error updating account: $e');
   }
-
-  // TO USE await updateAccount();
 }
