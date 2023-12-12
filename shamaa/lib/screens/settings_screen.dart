@@ -111,7 +111,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EditProfilScreen()));
+                              builder: (context) => EditProfilScreen(
+                                    index: widget.index,
+                                  )));
                     },
                     child: const ListProfile(
                       txt: 'اعدادات الحساب',

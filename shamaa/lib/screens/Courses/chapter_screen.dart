@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:progresso/progresso.dart';
-import 'package:shamaa/screens/courses/lessons_screen.dart';
+import 'package:shamaa/screens/Courses/lessons_screen.dart';
 import 'package:shamaa/screens/empty_screen.dart';
 
 import 'package:shamaa/style/custom_colors.dart';
 
 class ChapterScreen extends StatelessWidget {
-  const ChapterScreen({super.key});
+  const ChapterScreen({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +117,9 @@ class ChapterScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return LessonsScreen();
+                                return LessonsScreen(
+                                  index: index,
+                                );
                               }));
                             },
                             child: Container(

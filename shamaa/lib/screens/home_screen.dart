@@ -4,9 +4,9 @@ import 'package:progresso/progresso.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_bloc.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_state.dart';
 import 'package:shamaa/screens/Courses/chapter_screen.dart';
+import 'package:shamaa/screens/Courses/lessons_screen.dart';
 import 'package:shamaa/screens/competition/competition_1.dart';
 import 'package:shamaa/screens/competition/gamification_screen.dart';
-import 'package:shamaa/screens/courses/lessons_screen.dart';
 import 'package:shamaa/screens/empty_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/app_bar.dart';
@@ -15,7 +15,8 @@ import 'package:shamaa/widgets/explore_course.dart';
 import 'package:shamaa/widgets/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,9 @@ class HomeScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return ChapterScreen();
+                            return ChapterScreen(
+                              index: index,
+                            );
                           }));
                         },
                         child: ExploreCourse(
@@ -284,7 +287,7 @@ class HomeScreen extends StatelessWidget {
             height: 21,
           ),
           Padding(
-              padding: const EdgeInsets.only(right: 32),
+              padding: EdgeInsets.only(right: 32),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -310,7 +313,9 @@ class HomeScreen extends StatelessWidget {
                                   state.wordIndex < 3
                                       ? Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                          return const Competition1();
+                                          return Competition1(
+                                            index: index,
+                                          );
                                         }))
                                       : Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {

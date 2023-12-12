@@ -5,7 +5,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/box_lesson.dart';
 
 class LessonScreen extends StatelessWidget {
-  LessonScreen({super.key});
+  LessonScreen({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class LessonScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const GetStartTest()));
+                            builder: (context) => GetStartTest(index: index)));
                   },
                   child: BoxLesson(
                     color: lightgreen,

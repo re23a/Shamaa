@@ -9,7 +9,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/letters_container.dart';
 
 class Competition1 extends StatelessWidget {
-  const Competition1({super.key});
+  const Competition1({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -315,7 +316,7 @@ class Competition1 extends StatelessWidget {
           BlocListener<CompetitionBloc, CompetitionState>(
             listener: (context, state) async {
               if (state is EndState) {
-                await increaseAccountStars(15);
+                await increaseAccountStars(15, index!);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => GamificationScreen()),

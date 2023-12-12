@@ -8,7 +8,11 @@ import 'package:shamaa/widgets/progress_bar.dart';
 import 'package:intl/intl.dart';
 
 class UpdateAccScreen extends StatefulWidget {
-  const UpdateAccScreen({super.key});
+  const UpdateAccScreen({
+    super.key,
+    this.index,
+  });
+  final int? index;
 
   @override
   State<UpdateAccScreen> createState() => _UpdateAccScreenState();
@@ -156,6 +160,7 @@ class _UpdateAccScreenState extends State<UpdateAccScreen> {
             context,
             MaterialPageRoute(
                 builder: (context) => Update_character_screen(
+                      index: widget.index,
                       userName: userNameController.text,
                       dateOfBirth: dateController.text,
                       grade: selectedGrade!,

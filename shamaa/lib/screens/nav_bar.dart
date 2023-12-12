@@ -9,6 +9,7 @@ import 'package:shamaa/style/custom_colors.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key, this.index});
+
   final int? index;
 
   @override
@@ -25,7 +26,10 @@ class _NavBarState extends State<NavBar> {
       selectedIconColor: white,
       unselectedIconColor: white,
       items: [
-        FloatingNavBarItem(iconData: Icons.home, page: HomeScreen(), title: ''),
+        FloatingNavBarItem(
+            iconData: Icons.home,
+            page: HomeScreen(index: widget.index),
+            title: ''),
         FloatingNavBarItem(
             iconData: Icons.wallet_giftcard,
             page: LeaderboardsScreen(),

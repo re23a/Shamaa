@@ -6,7 +6,8 @@ import 'package:shamaa/widgets/custom_bottoms.dart';
 
 // ignore: must_be_immutable
 class EditProfilScreen extends StatelessWidget {
-  EditProfilScreen({super.key});
+  EditProfilScreen({super.key, this.index});
+  final int? index;
   String? selectedGrade;
   @override
   Widget build(BuildContext context) {
@@ -38,8 +39,9 @@ class EditProfilScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          UpdateAccScreen()), // Replace with your actual update screen
+                      builder: (context) => UpdateAccScreen(
+                            index: index,
+                          )), // Replace with your actual update screen
                 );
               },
               child: CustomButtomBig(

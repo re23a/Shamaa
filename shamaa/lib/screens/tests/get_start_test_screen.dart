@@ -4,7 +4,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
 class GetStartTest extends StatelessWidget {
-  const GetStartTest({super.key});
+  const GetStartTest({super.key, this.index});
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class GetStartTest extends StatelessWidget {
             alignment: Alignment.center,
             child: SizedBox(
               width: MediaQuery.of(context).size.width * .75,
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -59,8 +60,12 @@ class GetStartTest extends StatelessWidget {
           ),
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Test1Screen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Test1Screen(
+                              index: index,
+                            )));
               },
               child: CustomButtomBig(text: "ابدأ الاختبار ", color: purple)),
           Spacer(),

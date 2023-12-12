@@ -28,6 +28,7 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
       appBar: AppBar(
         backgroundColor: purple,
         title: const Text("تبديل الحساب"),
+        leading: Container(),
       ),
       body: BlocBuilder<AccountBlocBloc, AccountBlocState>(
         builder: (context, state) {

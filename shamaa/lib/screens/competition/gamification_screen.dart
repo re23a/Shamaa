@@ -8,7 +8,9 @@ import 'package:shamaa/widgets/custom_bottoms.dart';
 import 'package:video_player/video_player.dart';
 
 class GamificationScreen extends StatelessWidget {
-  GamificationScreen({super.key});
+  GamificationScreen({super.key, this.index});
+  final int? index;
+
   final assetsAudioPlayer = AssetsAudioPlayer();
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,9 @@ class GamificationScreen extends StatelessWidget {
               InkWell(
                 onTap: () async {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const NavBar();
+                    return NavBar(
+                      index: index,
+                    );
                   }));
                 },
                 child: CustomButtomBig(
