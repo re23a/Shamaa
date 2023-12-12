@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SearchBarWidget(),
           const SizedBox(
-            height: 21,
+            height: 12,
           ),
           Padding(
             padding: const EdgeInsets.only(right: 32),
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 21,
+                  height: 12,
                 ),
                 const Text(
                   'إكمال المشاهدة',
@@ -192,7 +192,7 @@ class HomeScreen extends StatelessWidget {
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                 color: Color(0xFF3A3A3A),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -201,7 +201,7 @@ class HomeScreen extends StatelessWidget {
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                 color: Color(0xFF3A3A3A),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -224,7 +224,7 @@ class HomeScreen extends StatelessWidget {
                               'ماذا سيتعلم الطفل بعد اجتياز هذا الدرس ؟',
                               style: TextStyle(
                                 color: Color(0xFF3A3A3A),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -232,7 +232,7 @@ class HomeScreen extends StatelessWidget {
                               '-عملية الجمع والطرح',
                               style: TextStyle(
                                 color: Color(0xFF3A3A3A),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -240,7 +240,7 @@ class HomeScreen extends StatelessWidget {
                               '-عملية الضرب والقسمه ',
                               style: TextStyle(
                                 color: Color(0xFF3A3A3A),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -267,7 +267,7 @@ class HomeScreen extends StatelessWidget {
                                     'استئناف رحلتك ',
                                     style: TextStyle(
                                       color: Color(0xFF3A3A3A),
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -284,7 +284,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 21,
+            height: 12,
           ),
           Padding(
               padding: EdgeInsets.only(right: 32),

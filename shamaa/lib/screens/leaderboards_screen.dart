@@ -55,7 +55,7 @@ class _LeaderboardsScreenState extends State<LeaderboardsScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      padding: EdgeInsets.only(bottom: 100),
+                      padding: EdgeInsets.only(bottom: 20),
                       itemCount: sortedAccounts.length - 1,
                       itemBuilder: (context, index) {
                         final account = sortedAccounts[index];
