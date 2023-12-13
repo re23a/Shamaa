@@ -5,12 +5,23 @@ import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
-class GamificationScreen extends StatelessWidget {
+class GamificationScreen extends StatefulWidget {
   GamificationScreen({super.key, this.index});
   final int? index;
 
-  final assetsAudioPlayer = AssetsAudioPlayer();
   @override
+  State<GamificationScreen> createState() => _GamificationScreenState();
+}
+
+class _GamificationScreenState extends State<GamificationScreen> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     assetsAudioPlayer.open(
       Audio("assets/audio.mp4"),
@@ -60,9 +71,10 @@ class GamificationScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () async {
+                  assetsAudioPlayer.dispose();
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return NavBar(
-                      index: index,
+                      index: widget.index,
                     );
                   }));
                 },
@@ -74,6 +86,7 @@ class GamificationScreen extends StatelessWidget {
               ),
               InkWell(
                   onTap: () {
+                    assetsAudioPlayer.dispose();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return const LeaderboardsScreen();

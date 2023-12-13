@@ -19,6 +19,11 @@ class _VideoScreenState extends State<VideoScreen> {
   );
 
   @override
+  void dispose() {
+    flickManager.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
@@ -144,6 +149,7 @@ class _VideoScreenState extends State<VideoScreen> {
           ),
           InkWell(
             onTap: () {
+              flickManager.dispose();
               Navigator.push(
                   context,
                   MaterialPageRoute(
