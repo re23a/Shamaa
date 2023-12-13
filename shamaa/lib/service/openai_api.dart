@@ -9,7 +9,7 @@ Future<String> chatGPT(String msg) async {
     headers: {
       "Content-Type": "application/json",
       "Authorization":
-          "Bearer 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"
+          "Bearer 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"
     },
     body: jsonEncode(
       {

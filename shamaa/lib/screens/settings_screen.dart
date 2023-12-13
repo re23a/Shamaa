@@ -137,9 +137,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                         style: TextStyle(
                                           color: black,
                                           fontSize: 20,
-                                          fontFamily: '.SF Arabic Rounded',
                                           fontWeight: FontWeight.w400,
-                                          height: 0.07,
                                         ),
                                       ),
                                       SizedBox(height: 16),

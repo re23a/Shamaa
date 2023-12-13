@@ -36,7 +36,7 @@ class ChatContainer extends StatelessWidget {
                 )),
             child: Text(
               message,
-              style: TextStyle(color: black),
+              style: TextStyle(color: black, fontSize: 16),
             ),
           ),
         ),

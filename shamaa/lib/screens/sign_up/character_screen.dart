@@ -137,15 +137,46 @@ class _CharacterScreenState extends State<CharacterScreen> {
           context
               .read<AccountBlocBloc>()
               .add(CreateAccountEvent(account: newAccount));
-
+          showDialog(
+              barrierColor: Colors.transparent,
+              context: context,
+              builder: (context) {
+                // here change
+                return Center(
+                  child: Container(
+                    width: 333,
+                    height: 300,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30), color: white),
+                    child: Column(
+                      children: [
+                        Image.asset("assets/Group 632648.png"),
+                        Center(
+                          child: Text(
+                            'تم إنشاء الحساب بنجـاح',
+                            style: TextStyle(
+                              color: green,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              });
           // Navigate to the next screen
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    NavBar()), // Replace with your desired screen
-            (Route<dynamic> route) => false,
-          );
+          Future.delayed(Duration(seconds: 3), () {
+            Navigator.pop(context);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      NavBar()), // Replace with your desired screen
+              (Route<dynamic> route) => false,
+            );
+          });
         } else {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('Please select a character'),
