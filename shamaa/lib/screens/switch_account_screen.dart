@@ -49,6 +49,9 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
         Expanded(
             child: _buildAccountsList(accounts)), // Fixed: use sortedAccounts
         _buildAddAccountTile(),
+        SizedBox(
+          height: 100,
+        )
       ],
     );
   }
@@ -165,7 +168,7 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
         height: 84,
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: Colors.grey, // Assuming this is the color
+          color: purple, // Assuming this is the color
           borderRadius: BorderRadius.circular(15),
         ),
         child: const Row(

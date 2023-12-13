@@ -164,10 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Container(
                         color: white,
                         height: 350,
-                        child: TabBarView(children: [
-                          Icon(Icons.add_a_photo),
-                          Icon(Icons.access_alarm)
-                        ]))
+                        child: TabBarView(children: [Text(""), Text("")]))
                   ]),
                 ),
               ],

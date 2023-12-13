@@ -31,11 +31,11 @@ class LessonsScreen extends StatelessWidget {
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return LessonScreen(
-                    index: index,
-                  );
-                }));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //   return LessonScreen(
+                //     index: index,
+                //   );
+                // }));
               },
               child: Image.asset("assets/prosess.png"))
         ],
