@@ -9,7 +9,7 @@ Future<String> chatGPT(String msg) async {
     headers: {
       "Content-Type": "application/json",
       "Authorization":
-          "Bearer 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"
+          "Bearer "
     },
     body: jsonEncode(
       {
@@ -37,3 +37,5 @@ String utf8convert(String text) {
   List<int> bytes = text.toString().codeUnits;
   return utf8.decode(bytes);
 }
+
+

@@ -11,7 +11,7 @@ import 'package:shamaa/widgets/tests_widgets.dart';
 
 class Test1Screen extends StatelessWidget {
   Test1Screen({super.key, this.index});
-  final int? index;
+  int? index;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,6 +174,7 @@ class Test1Screen extends StatelessWidget {
                           return InkWell(
                               onTap: () async {
                                 if (state.questionIndex == 2) {
+                                  index == null ? index = 0 : null;
                                   await increaseAccountStars(5, index!);
                                   // ignore: use_build_context_synchronously
                                   Navigator.push(
