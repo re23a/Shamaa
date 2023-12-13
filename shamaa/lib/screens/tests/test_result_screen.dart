@@ -6,7 +6,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
 class TestResultScreen extends StatelessWidget {
-  TestResultScreen({super.key});
+  TestResultScreen({super.key, this.index});
+  final int? index;
   final assetsAudioPlayer = AssetsAudioPlayer();
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,9 @@ class TestResultScreen extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const NavBar();
+                    return NavBar(
+                      index: index,
+                    );
                   }));
                 },
                 child: CustomButtomBig(

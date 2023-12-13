@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:shamaa/screens/leaderboards_screen.dart';
 import 'package:shamaa/screens/nav_bar.dart';
-import 'package:shamaa/service/supabase_request.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
-import 'package:video_player/video_player.dart';
 
 class GamificationScreen extends StatelessWidget {
   GamificationScreen({super.key, this.index});

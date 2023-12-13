@@ -1,6 +1,6 @@
 class Account {
   final int? id; // id is nullable
-  final String userId;
+  final String? userId;
   final String name;
   final DateTime dateOfBirth;
   final String studentClass;
@@ -9,7 +9,7 @@ class Account {
 
   Account({
     this.id, // Nullable
-    required this.userId,
+    this.userId,
     required this.name,
     required this.dateOfBirth,
     this.studentClass = '',

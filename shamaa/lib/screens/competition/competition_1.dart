@@ -317,9 +317,13 @@ class Competition1 extends StatelessWidget {
             listener: (context, state) async {
               if (state is EndState) {
                 await increaseAccountStars(15, index!);
+                // ignore: use_build_context_synchronously
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => GamificationScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => GamificationScreen(
+                            index: index!,
+                          )),
                   (Route<dynamic> route) => false,
                 );
               }

@@ -6,7 +6,8 @@ import 'package:video_player/video_player.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 
 class VideoScreen extends StatefulWidget {
-  const VideoScreen({super.key});
+  const VideoScreen({super.key, this.index});
+  final int? index;
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();

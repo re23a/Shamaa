@@ -121,7 +121,9 @@ class ChapterScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return LessonsScreen();
+                                  return LessonsScreen(
+                                    index: index,
+                                  );
                                 }));
                               },
                               child: Container(
@@ -271,8 +273,7 @@ class ChapterScreen extends StatelessWidget {
                                   ),
                                 ),
                               );
-                            }
-                            )
+                            })
                           ],
                         )
                       ],

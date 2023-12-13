@@ -7,6 +7,7 @@ import 'package:shamaa/widgets/app_bar.dart';
 
 class LeaderboardsScreen extends StatefulWidget {
   const LeaderboardsScreen({Key? key}) : super(key: key);
+
   @override
   _LeaderboardsScreenState createState() => _LeaderboardsScreenState();
 }

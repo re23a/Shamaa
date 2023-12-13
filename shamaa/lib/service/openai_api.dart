@@ -9,12 +9,17 @@ Future<String> chatGPT(String msg) async {
     headers: {
       "Content-Type": "application/json",
       "Authorization":
-          "Bearer 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"
+          "Bearer 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"
     },
     body: jsonEncode(
       {
         "model": "gpt-3.5-turbo",
         "messages": [
+          {
+            "role": "system",
+            "content":
+                "You are a teacher for children and try to help them learn In Arabic language with emoji."
+          },
           {"role": "user", "content": msg}
         ],
         "temperature": 1,
@@ -26,4 +31,9 @@ Future<String> chatGPT(String msg) async {
     ),
   );
   return jsonDecode(response.body)['choices'][0]["message"]["content"];
+}
+
+String utf8convert(String text) {
+  List<int> bytes = text.toString().codeUnits;
+  return utf8.decode(bytes);
 }
