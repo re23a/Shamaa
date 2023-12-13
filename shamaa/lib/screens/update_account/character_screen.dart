@@ -119,11 +119,10 @@ class _Update_character_screenState extends State<Update_character_screen> {
             return;
           }
           try {
-            DateTime parsedDateOfBirth = DateTime.parse(widget.dateOfBirth);
+            DateTime parsedDateOfBirth = format.parse(widget.dateOfBirth);
 
             Account account = Account(
-              userId: widget.index.toString(),
-              name: widget.toString(),
+              name: widget.userName,
               dateOfBirth: parsedDateOfBirth,
               studentClass: widget.grade,
               creatureIndex: selectedCharacterIndex,

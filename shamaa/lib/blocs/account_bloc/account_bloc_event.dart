@@ -18,3 +18,9 @@ class CreateAccountEvent extends AccountBlocEvent {
   final Account account;
   CreateAccountEvent({required this.account});
 }
+
+class UpdateAccountEvent extends AccountBlocEvent {
+  final Account account;
+
+  UpdateAccountEvent({required this.account});
+}

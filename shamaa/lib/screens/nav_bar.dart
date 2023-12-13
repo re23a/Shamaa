@@ -9,7 +9,6 @@ import 'package:shamaa/style/custom_colors.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key, this.index});
-
   final int? index;
 
   @override
@@ -17,6 +16,12 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  void navigateToLeaderboards() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => LeaderboardsScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingNavBar(

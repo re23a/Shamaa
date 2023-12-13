@@ -5,7 +5,7 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/box_lesson.dart';
 
 class LessonScreen extends StatelessWidget {
-  LessonScreen({super.key, this.index});
+  const LessonScreen({super.key, this.index});
   final int? index;
 
   @override
@@ -14,7 +14,7 @@ class LessonScreen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -24,7 +24,7 @@ class LessonScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 36,
           ),
           Center(

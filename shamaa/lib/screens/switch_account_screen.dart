@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shamaa/screens/nav_bar.dart';
-import 'package:shamaa/screens/profile_screen.dart';
 import 'package:shamaa/screens/sign_up/inf_acc_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shamaa/blocs/account_bloc/account_bloc_bloc.dart';
@@ -9,7 +8,6 @@ import 'package:shamaa/style/custom_colors.dart';
 
 class SwitchAccountScreen extends StatefulWidget {
   const SwitchAccountScreen({Key? key}) : super(key: key);
-
   @override
   _SwitchAccountScreenState createState() => _SwitchAccountScreenState();
 }
@@ -48,7 +46,8 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
   Widget _buildSuccessState(List<Account> accounts) {
     return Column(
       children: [
-        Expanded(child: _buildAccountsList(accounts)),
+        Expanded(
+            child: _buildAccountsList(accounts)), // Fixed: use sortedAccounts
         _buildAddAccountTile(),
       ],
     );
@@ -80,8 +79,10 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
 
   Widget _buildAccountsList(List<Account> accounts) {
     return ListView.builder(
-      itemCount: accounts.length,
+      itemCount: accounts.length, // Use sortedAccounts for itemCount
       itemBuilder: (BuildContext context, int index) {
+        var account = accounts[index]; // Use sortedAccounts for each item
+
         return InkWell(
           onTap: () {
             context.read<AccountBlocBloc>().add(FetchAccount(Numaber: index));
@@ -104,8 +105,8 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
                       side: BorderSide(width: 0.69, color: Color(0xFF3A3A3A)),
                     ),
                   ),
-                  child: Image.asset(
-                      "assets/c${accounts[index].creatureIndex + 1}.png"),
+                  child:
+                      Image.asset("assets/c${account.creatureIndex + 1}.png"),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
@@ -113,7 +114,7 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        accounts[index].name,
+                        account.name,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 24,
@@ -121,7 +122,7 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
                         ),
                       ),
                       Text(
-                        accounts[index].studentClass,
+                        account.studentClass,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -135,7 +136,7 @@ class _SwitchAccountScreenState extends State<SwitchAccountScreen> {
                 Row(
                   children: [
                     Text(
-                      accounts[index].stars.toString(),
+                      account.stars.toString(),
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,

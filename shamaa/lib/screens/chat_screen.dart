@@ -6,6 +6,7 @@ import 'package:shamaa/blocs/chat_gpt_bloc/chat_event.dart';
 import 'package:shamaa/blocs/chat_gpt_bloc/chat_state.dart';
 import 'package:shamaa/service/openai_api.dart';
 import 'package:shamaa/style/custom_colors.dart';
+import 'package:shamaa/widgets/chat_container.dart';
 import 'package:shamaa/widgets/textFeild_chat.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -61,7 +62,7 @@ class ChatScreen extends StatelessWidget {
                             if (snapshot.hasData) {
                               return ChatContainer(
                                 isMine: false,
-                                message: snapshot.data!,
+                                message: utf8convert(snapshot.data!),
                               );
                             } else {
                               return Center(

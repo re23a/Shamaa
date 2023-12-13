@@ -18,7 +18,7 @@ class Test1Screen extends StatelessWidget {
       backgroundColor: white,
       appBar: AppBar(
         backgroundColor: purple,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -28,7 +28,7 @@ class Test1Screen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 101,
           ),
           BlocBuilder<TestBloc, TestState>(
@@ -61,9 +61,7 @@ class Test1Screen extends StatelessWidget {
               );
             },
           ),
-          SizedBox(
-            height: 36,
-          ),
+          const SizedBox(height: 36),
           Center(
             child: BlocBuilder<TestBloc, TestState>(
               builder: (context, state) {
@@ -169,22 +167,22 @@ class Test1Screen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 32,
-                    ),
+                    const SizedBox(height: 32),
                     BlocBuilder<TestBloc, TestState>(
                       builder: (context, state) {
                         if (state is CorrectState) {
                           return InkWell(
                               onTap: () async {
                                 if (state.questionIndex == 2) {
-                                  await increaseAccountStars(15, index!);
+                                  await increaseAccountStars(5, index!);
                                   // ignore: use_build_context_synchronously
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TestResultScreen()));
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          TestResultScreen(index: index),
+                                    ),
+                                  );
                                 }
 
                                 context.read<TestBloc>().add(NextQuestionEvent(

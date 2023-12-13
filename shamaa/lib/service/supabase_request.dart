@@ -41,18 +41,25 @@ Future<void> increaseAccountStars(int incrementStars, int? accountIndex) async {
   }
 }
 
-Future<void> updateAccount(Account account, int? index) async {
+Future<void> updateAccount(Account account, int? id) async {
   final SupabaseClient client = Supabase.instance.client;
   String userId = client.auth.currentUser!.id;
 
   try {
-    final Map<String, dynamic> updateData = account.toMap();
-    print(updateData[index]);
+    // Map with only the fields to be updated
+    final Map<String, dynamic> updateData = {
+      'name': account.name,
+      'date_of_birth': account.dateOfBirth.toIso8601String(),
+      'student_class': account.studentClass,
+      'creature_index': account.creatureIndex,
+    };
+
+    // Update the account in the database
     await client
         .from('account')
         .update(updateData)
         .eq('user_id', userId)
-        .eq("id", account.id);
+        .single();
   } catch (e) {
     print('Error updating account: $e');
   }
