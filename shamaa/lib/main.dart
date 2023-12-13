@@ -10,6 +10,7 @@ import 'package:shamaa/blocs/chat_gpt_bloc/chat_bloc.dart';
 import 'package:shamaa/blocs/competition_bloc/competition_bloc.dart';
 import 'package:shamaa/blocs/onbaording_bloc/onbaording_bloc.dart';
 import 'package:shamaa/blocs/test_bloc/test_bloc.dart';
+import 'package:shamaa/screens/nav_bar.dart';
 import 'package:shamaa/screens/splash_screen.dart';
 import 'package:shamaa/service/supabase_service.dart';
 

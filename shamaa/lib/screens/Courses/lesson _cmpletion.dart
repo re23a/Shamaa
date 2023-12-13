@@ -6,10 +6,22 @@ import 'package:shamaa/screens/tests/get_start_test_screen.dart';
 import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/custom_bottoms.dart';
 
-class LessonCmpletionScreen extends StatelessWidget {
+class LessonCmpletionScreen extends StatefulWidget {
   LessonCmpletionScreen({super.key});
-  final assetsAudioPlayer = AssetsAudioPlayer();
+
   @override
+  State<LessonCmpletionScreen> createState() => _LessonCmpletionScreenState();
+}
+
+class _LessonCmpletionScreenState extends State<LessonCmpletionScreen> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     assetsAudioPlayer.open(
       Audio("assets/audio.mp4"),
@@ -59,6 +71,7 @@ class LessonCmpletionScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    assetsAudioPlayer.dispose();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return const NavBar();
@@ -72,6 +85,7 @@ class LessonCmpletionScreen extends StatelessWidget {
                 ),
                 InkWell(
                     onTap: () {
+                      assetsAudioPlayer.dispose();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return const GetStartTest();
