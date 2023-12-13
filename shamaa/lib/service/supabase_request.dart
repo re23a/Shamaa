@@ -2,6 +2,7 @@ import 'package:shamaa/model/account.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> increaseAccountStars(int incrementStars, int? accountIndex) async {
+  
   final SupabaseClient client = Supabase.instance.client;
   if (client.auth.currentUser == null) {
     print('No authenticated user found.');

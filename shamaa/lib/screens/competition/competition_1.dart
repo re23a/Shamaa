@@ -9,8 +9,8 @@ import 'package:shamaa/style/custom_colors.dart';
 import 'package:shamaa/widgets/letters_container.dart';
 
 class Competition1 extends StatelessWidget {
-  const Competition1({super.key, this.index});
-  final int? index;
+  Competition1({super.key, this.index});
+  int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class Competition1 extends StatelessWidget {
                 BlocBuilder<CompetitionBloc, CompetitionState>(
                   builder: (context, state) {
                     return AnimatedContainer(
-                      duration: const Duration(milliseconds: 700),
+                      duration: const Duration(milliseconds: 350),
                       curve: Curves.bounceIn,
                       width: 336,
                       height: 227,
@@ -316,7 +316,8 @@ class Competition1 extends StatelessWidget {
           BlocListener<CompetitionBloc, CompetitionState>(
             listener: (context, state) async {
               if (state is EndState) {
-                await increaseAccountStars(15, index!);
+                index == null ? index = 0 : null;
+                await increaseAccountStars(15, index);
                 // ignore: use_build_context_synchronously
                 Navigator.pushAndRemoveUntil(
                   context,
